@@ -2,32 +2,44 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Home</title>
 </head>
 <body>
+<div class="container">
+    <div class="card" th:each="produto : ${produtos}">
+        <div class="card-header" th:text="${produto.nomeProduto}">Nome do Produto</div>
 
-<div th:each="produto : ${produtos}">
-    <div>Produto</div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div>URL do Produto:</div>
+                    <div><input class="form-control" th:value="${produto.urlProduto}" value="URL do Produto"/></div>
 
-    <div th:text="${produto.nomeProduto}">Nome do Produto</div>
+                    <div>Descrição do Produto:</div>
+                    <div>
+                        <textarea class="form-control"
+                                  th:text="${produto.descricaoProduto}">Descrição do Produto</textarea>
+                    </div>
 
-    <div>URL do Produto:</div>
-    <div> <input th:value="${produto.urlProduto}" value="URL do Produto"/></div>
+                    <div>Preço do Produto: <span th:text="${produto.precoProduto}">R$37.498,00</span></div>
 
-    <div>Descrição do Produto:</div>
-    <div>
-        <textarea th:text="${produto.descricaoProduto}">Descrição do Produto</textarea>
-    </div>
+                    <div>Preço Promocional do Produto: <span
+                            th:text="${produto.precoPromocionalProduto}">R$3.4000,99</span>
+                    </div>
 
-    <div>Preço do Produto: <span th:text="${produto.precoProduto}">R$37.498,00</span></div>
+                    <div>Classe Fiscal</div>
+                    <div>
+                <textarea class="form-control"
+                          th:text="${produto.classeFiscalProduto}">Classe Fiscal do Produto</textarea>
+                    </div>
 
-    <div>Preço Promocional do Produto: <span th:text="${produto.precoPromocionalProduto}">R$3.4000,99</span></div>
+                </div>
+            </div>
+        </div>
 
-    <div>Classe Fiscal</div>
-    <div>
-        <textarea th:text="${produto.classeFiscalProduto}">Classe Fiscal do Produto</textarea>
     </div>
 </div>
-
 </body>
 </html>
