@@ -23,6 +23,58 @@ public class Produto {
 
     private BigDecimal precoPromocionalProduto;
 
-    @Column(length = 10)
+    @Column(length = 10, nullable = false)
     private String classeFiscalProduto;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public String getUrlProduto() {
+        return urlProduto;
+    }
+
+    public void setUrlProduto(String urlProduto) {
+        this.urlProduto = urlProduto;
+    }
+
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+    }
+
+    public BigDecimal getPrecoProduto() {
+        return precoProduto;
+    }
+
+    public void setPrecoProduto(BigDecimal precoProduto) {
+        this.precoProduto = precoProduto;
+    }
+
+    public BigDecimal getPrecoPromocionalProduto() {
+        return precoPromocionalProduto;
+    }
+
+    public void setPrecoPromocionalProduto(BigDecimal precoPromocionalProduto) {
+        this.precoPromocionalProduto = precoPromocionalProduto;
+    }
+
+    public String getClasseFiscalProduto() {
+        return classeFiscalProduto;
+    }
+
+    public void setClasseFiscalProduto(String classeFiscalProduto) {
+        this.classeFiscalProduto = classeFiscalProduto;
+    }
 }
