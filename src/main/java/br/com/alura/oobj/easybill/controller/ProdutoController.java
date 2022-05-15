@@ -1,5 +1,6 @@
 package br.com.alura.oobj.easybill.controller;
 
+import br.com.alura.oobj.easybill.dto.RequisicaoNovoProduto;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,7 +16,7 @@ public class ProdutoController {
     }
 
     @PostMapping("produtos")
-    public String novo() {
+    public String novo(RequisicaoNovoProduto requisicao) {
         return "admin/produtos/formulario";
     }
 }
