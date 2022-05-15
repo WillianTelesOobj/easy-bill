@@ -17,7 +17,7 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        List<Produto> produtos = repository.recuperaTodosOsProdutos();
+        List<Produto> produtos = repository.findAll();
         model.addAttribute("produtos", produtos);
         return "home";
     }
