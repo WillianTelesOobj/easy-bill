@@ -22,7 +22,7 @@
         </a>
     </nav>
 
-    <div class="card" th:each="produto : ${produtos}">
+    <div class="card mb-3" th:each="produto : ${produtos}">
         <div class="card-header" th:text="${produto.nomeProduto}">Nome do Produto</div>
 
         <div class="card-body">
@@ -33,22 +33,19 @@
 
                     <div>Descrição do Produto:</div>
                     <div>
-                        <textarea class="form-control"
-                                  th:text="${produto.descricaoProduto}">Descrição do Produto</textarea>
+                        <textarea class="form-control" th:text="${produto.descricaoProduto}">Descrição do Produto</textarea>
                     </div>
 
-                    <div>Preço do Produto: <span th:text="${produto.precoProduto}">R$37.498,00</span></div>
+                    <div>Preço do Produto: <span th:text="${produto.precoProduto}">R$37.498,00</span>
+                    </div>
 
-                    <div>Preço Promocional do Produto: <span
-                            th:text="${produto.precoPromocionalProduto}">R$3.4000,99</span>
+                    <div>Preço Promocional do Produto: <span th:text="${produto.precoPromocionalProduto}">R$3.4000,99</span>
                     </div>
 
                     <div>Classe Fiscal</div>
                     <div>
-                <textarea class="form-control"
-                          th:text="${produto.classeFiscalProduto}">Classe Fiscal do Produto</textarea>
+                <textarea class="form-control" th:text="${produto.classeFiscalProduto}">Classe Fiscal do Produto</textarea>
                     </div>
-
                 </div>
             </div>
         </div>
