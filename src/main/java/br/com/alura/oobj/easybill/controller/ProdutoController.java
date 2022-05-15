@@ -5,9 +5,12 @@ import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("admin")
@@ -17,12 +20,12 @@ public class ProdutoController {
     private ProdutoRepository produtoRepository;
 
     @GetMapping("produtos/formulario")
-    public String formulario() {
+    public String formulario(RequisicaoNovoProduto requisicaoNovoProduto) {
         return "admin/produtos/formulario";
     }
 
     @PostMapping("produtos")
-    public String novo(RequisicaoNovoProduto requisicaoNovoProduto) {
+    public String produtos(RequisicaoNovoProduto requisicaoNovoProduto) {
 
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);
