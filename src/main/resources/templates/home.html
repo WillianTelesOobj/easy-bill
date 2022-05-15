@@ -8,6 +8,20 @@
 </head>
 <body>
 <div class="container">
+
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">Lista de Produtos</h1>
+    </div>
+
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand mb-3"></a>
+        <!--            <input class="form-control mr-sm-2" type="search" placeholder="Digitar Nome do Produto" aria-label="Search">-->
+        <!--            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Procurar Produto</button>-->
+        <a href="/produto/formulario">
+            <button class="btn btn-outline-secondary my-2 my-sm-0">Novo Produto</button>
+        </a>
+    </nav>
+
     <div class="card" th:each="produto : ${produtos}">
         <div class="card-header" th:text="${produto.nomeProduto}">Nome do Produto</div>
 
@@ -38,7 +52,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 </body>
