@@ -1,10 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Formulario</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-Olá!!!
+<div class="container">
+    <div class="jumbotron mb-0">
+        <h1 class="display-4">Novo Pedido</h1>
+    </div>
+
+    <form action="/admin/produtos" method="POST">
+        <div>
+            <label for="nomeProduto">Produto:</label>
+            <input name="nomeProduto" placeholder="Nome do Produto"/>
+            <small>Informe o Nome do Produto</small>
+        </div>
+        <div>
+            <label for="urlProduto">URL do Produto:</label>
+            <input name="urlProduto" placeholder="URL do Produto"/>
+            <small>Informe a URL do Produto</small>
+        </div>
+        <div>
+            <label for="descricaoProduto">Descrição do Produto:</label>
+            <textarea name="descricaoProduto" placeholder="Adicione uma descrição do produto"></textarea>
+        </div>
+        <div>
+            <label for="precoProduto">Preço do Produto:</label>
+            <input name="precoProduto" placeholder="Preço do Produto"/>
+            <small>Informe o Preço do Produto</small>
+        </div>
+        <div>
+            <label for="precoPromocionalProduto">Preço Promocional do Produto:</label>
+            <input name="precoPromocionalProduto" placeholder="Preço Promocional do Produto"/>
+            <small>Informe o Preço Promocional do Produto</small>
+        </div>
+        <div>
+            <label for="classeFiscalProduto">Classe Fiscal do Produto:</label>
+            <input name="classeFiscalProduto" placeholder="Classe Fiscal do Produto"/>
+            <small>Informe o Classe Fiscal do Produto</small>
+        </div>
+        <button type="submit">Cadastrar Novo Produto</button>
+    </form>
+</div>
 </body>
 </html>
