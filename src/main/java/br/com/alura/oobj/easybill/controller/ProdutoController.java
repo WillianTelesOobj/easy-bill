@@ -24,12 +24,12 @@ public class ProdutoController {
         return "admin/produtos/formulario";
     }
 
-    @PostMapping("produtos")
-    public String produtos(RequisicaoNovoProduto requisicaoNovoProduto) {
+    @PostMapping("home")
+    public String home(RequisicaoNovoProduto requisicaoNovoProduto) {
 
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);
 
-        return "admin/produtos/formulario";
+        return "redirect:home";
     }
 }
