@@ -24,8 +24,8 @@ public class ProdutoController {
         return "admin/produtos/formulario";
     }
 
-    @PostMapping("home")
-    public String home(RequisicaoNovoProduto requisicaoNovoProduto) {
+    @PostMapping("produtos")
+    public String produtos(RequisicaoNovoProduto requisicaoNovoProduto) {
 
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);
