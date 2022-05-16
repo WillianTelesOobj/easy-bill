@@ -1,6 +1,7 @@
 package br.com.alura.oobj.easybill.dto;
 
 import br.com.alura.oobj.easybill.model.Produto;
+import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
@@ -25,7 +26,8 @@ public class RequisicaoNovoProduto {
     private BigDecimal precoPromocionalProduto;
 
     @NotBlank
-    @Size(max= 10)
+    @Length(min=10, max=10)
+    @Pattern(regexp = "^[0-9]{4}[.][0-9]{2}[.][0-9]{2}+$")
     private String classeFiscalProduto;
 
     public String getNomeProduto() {
