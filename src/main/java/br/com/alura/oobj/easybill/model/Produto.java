@@ -10,20 +10,22 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 150, nullable = false)
+    @Column(length = 150, nullable = false, name = "nomeProduto")
     private String nomeProduto;
 
-    @Column(length = 500, nullable = false)
+    @Column(length = 500, nullable = false, name = "urlProduto")
     private String urlProduto;
 
-    @Column(length = 1000)
+    @Column(length = 1000, name = "descricaoProduto")
     private String descricaoProduto;
 
+    @Column(nullable = false, name = "precoProduto")
     private BigDecimal precoProduto;
 
+    @Column(name = "precoPromocionalProduto")
     private BigDecimal precoPromocionalProduto;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 10, nullable = false, name = "classeFiscalProduto")
     private String classeFiscalProduto;
 
     public Long getId() {

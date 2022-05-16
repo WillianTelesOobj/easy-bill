@@ -3,6 +3,7 @@ package br.com.alura.oobj.easybill.controller;
 import br.com.alura.oobj.easybill.dto.RequisicaoNovoProduto;
 import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -25,7 +26,10 @@ public class ProdutoController {
     }
 
     @PostMapping("produtos")
-    public String produtos(RequisicaoNovoProduto requisicaoNovoProduto) {
+    public String produtos(@Valid RequisicaoNovoProduto requisicaoNovoProduto, @NotNull BindingResult result) {
+        if(result.hasErrors()){
+            return "admin/produtos/formulario";
+        }
 
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);

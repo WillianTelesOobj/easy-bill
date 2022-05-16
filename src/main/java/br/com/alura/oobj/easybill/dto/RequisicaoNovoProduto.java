@@ -17,7 +17,7 @@ public class RequisicaoNovoProduto {
     @Size(max = 1000)
     private String descricaoProduto;
 
-    @NotBlank
+    @NotNull
     @DecimalMin("0.01")
     private BigDecimal precoProduto;
 
