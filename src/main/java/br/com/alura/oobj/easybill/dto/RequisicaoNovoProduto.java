@@ -19,15 +19,15 @@ public class RequisicaoNovoProduto {
     private String descricaoProduto;
 
     @NotNull
-    @DecimalMin("0.01")
+    @Positive
     private BigDecimal precoProduto;
 
-    @DecimalMin("0.01")
+    @Positive
     private BigDecimal precoPromocionalProduto;
 
     @NotBlank
     @Length(min=10, max=10)
-    @Pattern(regexp = "^[0-9]{4}[.][0-9]{2}[.][0-9]{2}+$")
+    @Pattern(regexp = "^[\\d]{4}[.][\\d]{2}[.][\\d]{2}+$")
     private String classeFiscalProduto;
 
     public String getNomeProduto() {

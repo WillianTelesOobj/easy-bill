@@ -18,10 +18,10 @@ import javax.validation.Valid;
 @RequestMapping("admin")
 public class ProdutoController {
 
-    @Autowired
-    private ProdutoRepository produtoRepository;
-    private ProdutoAPIController produtoAPIController;
-    private PrecoPromocionalValidator precoPromocionalValidator;
+    private final ProdutoRepository produtoRepository;
+    private final ProdutoAPIController produtoAPIController;
+    private final PrecoPromocionalValidator precoPromocionalValidator;
+
 
     public ProdutoController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator, ProdutoAPIController produtoAPIController){
         this.produtoRepository = produtoRepository;

@@ -20,6 +20,6 @@ public class ProdutoAPIController {
     @GetMapping("/api/produtos")
     public List<DevolveProduto> listagemDeProdutos(){
         List<Produto> produtos = produtoRepository.findAll();
-        return DevolveProduto.converte(produtos);
+        return DevolveProduto.converter(produtos);
     }
 }

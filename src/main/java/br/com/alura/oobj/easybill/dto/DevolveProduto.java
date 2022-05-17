@@ -46,8 +46,9 @@ public class DevolveProduto {
         this.classeFiscalProduto = produto.getClasseFiscalProduto();
     }
 
-    public static List<DevolveProduto> converte(List<Produto> produtos){
-        return produtos.stream().map(DevolveProduto::new).collect(Collectors.toList());
+    public static List<DevolveProduto> converter(List<Produto> produtos){
+        return produtos.stream()
+                .map(DevolveProduto::new)
+                .collect(Collectors.toList());
     }
 }
-
