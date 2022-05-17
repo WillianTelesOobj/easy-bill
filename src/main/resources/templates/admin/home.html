@@ -24,7 +24,7 @@
     </div>
 
     <div class="card mb-3" th:each="produto : ${produtos}">
-        <div class="card-header bg-secondary text-white" th:text="${produto.nomeProduto}">Nome do Produto</div>
+        <div class="card-header alert-success" th:text="${produto.nomeProduto}">Nome do Produto</div>
 
         <div class="card-body">
             <div class="row">

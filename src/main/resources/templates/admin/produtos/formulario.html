@@ -16,52 +16,47 @@
         <form th:object="${requisicaoNovoProduto}" class="card-body" action="/admin/produtos" method="POST">
             <div class="form-group">
                 <label for="nomeProduto">Produto:</label>
-                <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Nome do Produto"/>
-                <small>Informe o Nome do Produto</small>
+                <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Nome do Produto"/>
                 <div class="invalid-feedback" th:errors="*{nomeProduto}">
                     Erro no Nome do Produto
                 </div>
             </div>
             <div class="form-group">
                 <label for="urlProduto">URL do Produto:</label>
-                <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="URL do Produto"/>
-                <small>Informe a URL do Produto</small>
+                <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe a URL do Produto"/>
                 <div class="invalid-feedback" th:errors="*{urlProduto}">
                     Erro na URL do Produto
                 </div>
             </div>
             <div class="form-group">
                 <label for="descricaoProduto">Descrição do Produto:</label>
-                <textarea th:field="*{descricaoProduto}" th:errorclass="is-invalid" class="form-control z-depth-1" placeholder="Adicione uma descrição do produto"></textarea>
+                <textarea th:field="*{descricaoProduto}" th:errorclass="is-invalid" class="form-control z-depth-1" placeholder="Adicione uma Descrição do Produto"></textarea>
                 <div class="invalid-feedback" th:errors="*{descricaoProduto}">
                     Erro na Descrição do Produto
                 </div>
             </div>
             <div class="form-group">
                 <label for="precoProduto">Preço do Produto:</label>
-                <input th:field="*{precoProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Preço do Produto"/>
-                <small>Informe o Preço do Produto</small>
+                <input th:field="*{precoProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Preço do Produto"/>
                 <div class="invalid-feedback" th:errors="*{precoProduto}">
                     Erros no Preço do Produto
                 </div>
             </div>
             <div class="form-group">
                 <label for="precoPromocionalProduto">Preço Promocional do Produto:</label>
-                <input th:field="*{precoPromocionalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Preço Promocional do Produto"/>
-                <small>Informe o Preço Promocional do Produto</small>
+                <input th:field="*{precoPromocionalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Preço Promocional do Produto"/>
                 <div class="invalid-feedback" th:errors="*{precoPromocionalProduto}">
                     Erros no Preço Promocional do Produto
                 </div>
             </div>
             <div class="form-group">
                 <label for="classeFiscalProduto">Classe Fiscal do Produto:</label>
-                <input th:field="*{classeFiscalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Classe Fiscal do Produto"/>
-                <small>Informe a Classe Fiscal do Produto</small>
+                <input th:field="*{classeFiscalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe a Classe Fiscal do Produto"/>
                 <div class="invalid-feedback" th:errors="*{classeFiscalProduto}">
                     Erro na Classe Fiscal do Produto
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Cadastrar Novo Produto</button>
+            <button type="submit" class="btn alert-success">Cadastrar Novo Produto</button>
         </form>
     </div>
 </div>
