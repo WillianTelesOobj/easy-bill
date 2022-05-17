@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 
@@ -19,6 +20,8 @@ public class ProdutoController {
 
     @Autowired
     private ProdutoRepository produtoRepository;
+    private ProdutoAPIController produtoAPIController;
+
 
     @GetMapping("produtos/formulario")
     public String formulario(RequisicaoNovoProduto requisicaoNovoProduto) {
@@ -35,5 +38,12 @@ public class ProdutoController {
         produtoRepository.save(produto);
 
         return "redirect:home";
+    }
+
+    @GetMapping("/produto")
+    public ModelAndView listaProdutos(){
+        ModelAndView modelAndView = new ModelAndView("admin/produto");
+        modelAndView.addObject("produto", produtoAPIController.listagemDeProdutos());
+        return modelAndView;
     }
 }

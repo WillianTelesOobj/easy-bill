@@ -34,16 +34,16 @@
 
                     <div>Descrição do Produto:</div>
                     <div>
-                        <textarea class="form-control" th:text="${produto.descricaoProduto}">Descrição do Produto</textarea>
+                        <textarea class="form-control" th:text="${produto.descricaoProduto}"></textarea>
                     </div>
 
-                    <div>Preço do Produto: <span th:text="${produto.precoProduto}">R$37.498,00</span>
+                    <div>Preço do Produto: <span th:text="${'R$ ' + #numbers.formatDecimal(produto.precoProduto,3,'POINT',2,'COMMA')}"></span>
                     </div>
 
-                    <div>Preço Promocional do Produto: <span th:text="${produto.precoPromocionalProduto}">R$3.4000,99</span>
+                    <div>Preço Promocional do Produto: <span th:text="${'R$ ' + #numbers.formatDecimal(produto.precoPromocionalProduto,3,'POINT',2,'COMMA')}"></span>
                     </div>
 
-                    <div>Classe Fiscal do Produto: <span th:text="${produto.classeFiscalProduto}">Classe Fiscal do Produto</span>
+                    <div>Classe Fiscal do Produto: <span th:text="${produto.classeFiscalProduto}"></span>
                     </div>
 
                 </div>
