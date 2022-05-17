@@ -3,7 +3,7 @@ package br.com.alura.oobj.easybill.controller;
 import br.com.alura.oobj.easybill.dto.RequisicaoNovoProduto;
 import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
-import org.jetbrains.annotations.NotNull;
+import br.com.alura.oobj.easybill.validator.PrecoPromocionalValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -21,7 +21,13 @@ public class ProdutoController {
     @Autowired
     private ProdutoRepository produtoRepository;
     private ProdutoAPIController produtoAPIController;
+    private PrecoPromocionalValidator precoPromocionalValidator;
 
+    public ProdutoController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator, ProdutoAPIController produtoAPIController){
+        this.produtoRepository = produtoRepository;
+        this.precoPromocionalValidator = precoPromocionalValidator;
+        this.produtoAPIController = produtoAPIController;
+    }
 
     @GetMapping("produtos/formulario")
     public String formulario(RequisicaoNovoProduto requisicaoNovoProduto) {
@@ -29,14 +35,13 @@ public class ProdutoController {
     }
 
     @PostMapping("produtos")
-    public String produtos(@Valid RequisicaoNovoProduto requisicaoNovoProduto, @NotNull BindingResult result) {
+    public String produtos(@Valid RequisicaoNovoProduto requisicaoNovoProduto,BindingResult result) {
+        precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProduto,result);
         if(result.hasErrors()){
             return "admin/produtos/formulario";
         }
-
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);
-
         return "redirect:home";
     }
 

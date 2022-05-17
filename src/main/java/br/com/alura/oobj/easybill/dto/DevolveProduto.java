@@ -12,13 +12,9 @@ public class DevolveProduto {
 
     private String nomeProduto;
 
-    private String urlProduto;
-
     private String descricaoProduto;
 
     private BigDecimal precoProduto;
-
-    private BigDecimal precoPromocionalProduto;
 
     private String classeFiscalProduto;
 
@@ -30,20 +26,12 @@ public class DevolveProduto {
         return nomeProduto;
     }
 
-    public String getUrlProduto() {
-        return urlProduto;
-    }
-
     public String getDescricaoProduto() {
         return descricaoProduto;
     }
 
     public BigDecimal getPrecoProduto() {
         return precoProduto;
-    }
-
-    public BigDecimal getPrecoPromocionalProduto() {
-        return precoPromocionalProduto;
     }
 
     public String getClasseFiscalProduto() {
@@ -53,10 +41,8 @@ public class DevolveProduto {
     public DevolveProduto(Produto produto){
         this.id = produto.getId();
         this.nomeProduto = produto.getNomeProduto();
-        this.urlProduto = produto.getUrlProduto();;
         this.descricaoProduto = produto.getDescricaoProduto();
         this.precoProduto = produto.getPrecoProduto();
-        this.precoPromocionalProduto = produto.getPrecoPromocionalProduto();
         this.classeFiscalProduto = produto.getClasseFiscalProduto();
     }
 
