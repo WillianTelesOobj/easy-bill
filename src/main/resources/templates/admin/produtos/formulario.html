@@ -14,6 +14,7 @@
 
     <div class="card mt-3">
         <form th:object="${requisicaoNovoProduto}" class="card-body" action="/admin/produtos" method="POST">
+
             <div class="form-group">
                 <label for="nomeProduto">Produto:</label>
                 <input th:field="*{nomeProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Nome do Produto"/>
@@ -21,6 +22,7 @@
                     Erro no Nome do Produto
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="urlProduto">URL do Produto:</label>
                 <input th:field="*{urlProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe a URL do Produto"/>
@@ -28,6 +30,7 @@
                     Erro na URL do Produto
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="descricaoProduto">Descrição do Produto:</label>
                 <textarea th:field="*{descricaoProduto}" th:errorclass="is-invalid" class="form-control z-depth-1" placeholder="Adicione uma Descrição do Produto"></textarea>
@@ -35,6 +38,7 @@
                     Erro na Descrição do Produto
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="precoProduto">Preço do Produto:</label>
                 <input th:field="*{precoProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Preço do Produto"/>
@@ -42,6 +46,7 @@
                     Erros no Preço do Produto
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="precoPromocionalProduto">Preço Promocional do Produto:</label>
                 <input th:field="*{precoPromocionalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe o Preço Promocional do Produto"/>
@@ -49,6 +54,7 @@
                     Erros no Preço Promocional do Produto
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="classeFiscalProduto">Classe Fiscal do Produto:</label>
                 <input th:field="*{classeFiscalProduto}" th:errorclass="is-invalid" class="form-control" placeholder="Informe a Classe Fiscal do Produto"/>
@@ -56,6 +62,7 @@
                     Erro na Classe Fiscal do Produto
                 </div>
             </div>
+
             <button type="submit" class="btn alert-success">Cadastrar Novo Produto</button>
         </form>
     </div>

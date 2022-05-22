@@ -29,6 +29,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-12">
+
                     <div>URL do Produto:</div>
                     <div><input class="form-control" th:value="${produto.urlProduto}" value="URL do Produto"/></div>
 
@@ -40,7 +41,7 @@
                     <div>Preço do Produto: <span th:text="${'R$ ' + #numbers.formatDecimal(produto.precoProduto,3,'POINT',2,'COMMA')}"></span>
                     </div>
 
-                    <div>Preço Promocional do Produto: <span th:text="${'R$ ' + #numbers.formatDecimal(produto.precoPromocionalProduto,3,'POINT',2,'COMMA')}"></span>
+                    <div>Preço Promocional do Produto: <span th:if="${produto.precoPromocionalProduto} != null" th:text="${'R$ ' + #numbers.formatDecimal(produto.precoPromocionalProduto,3,'POINT',2,'COMMA')}"></span>
                     </div>
 
                     <div>Classe Fiscal do Produto: <span th:text="${produto.classeFiscalProduto}"></span>
