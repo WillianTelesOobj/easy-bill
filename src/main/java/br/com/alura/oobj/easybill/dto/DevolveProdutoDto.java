@@ -41,7 +41,7 @@ public class DevolveProdutoDto {
     public DevolveProdutoDto(Produto produto){
         this.id = produto.getId();
         this.nomeProduto = produto.getNomeProduto();
-        this.descricaoProduto = getDescricaoTruncada(produto.getDescricaoProduto());
+        this.descricaoProduto = getDescricaoProdutoTruncada(produto.getDescricaoProduto());
         this.precoProduto = produto.getPrecoPromocionalProduto() != null ? produto.getPrecoPromocionalProduto() : produto.getPrecoProduto();
         this.classeFiscalProduto = produto.getClasseFiscalProduto();
     }
@@ -51,11 +51,12 @@ public class DevolveProdutoDto {
                 .map(DevolveProdutoDto::new)
                 .collect(Collectors.toList());
     }
-    public String getDescricaoTruncada(String descricaoProduto) {
+
+    public String getDescricaoProdutoTruncada(String descricaoProduto) {
         if (descricaoProduto.length() <= 250) {
             return descricaoProduto;
         }
-        String descricaoTruncada = descricaoProduto.substring(0,247);
-        return descricaoTruncada + "...";
+        String descricaoProdutoTruncada = descricaoProduto.substring(0,247);
+        return descricaoProdutoTruncada + "...";
     }
 }
