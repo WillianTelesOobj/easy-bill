@@ -42,7 +42,7 @@ public class ProdutoController {
         }
         Produto produto = requisicaoNovoProduto.toProduto();
         produtoRepository.save(produto);
-        return "redirect:home";
+        return "redirect:produtos";
     }
 
     @GetMapping("/produto")

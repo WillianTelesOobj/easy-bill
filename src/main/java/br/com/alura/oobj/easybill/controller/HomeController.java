@@ -15,10 +15,10 @@ public class HomeController {
     @Autowired
     private ProdutoRepository repository;
 
-    @GetMapping("/admin/home")
-    public String home(Model model) {
+    @GetMapping("/admin/produtos")
+    public String produtos(Model model) {
         List<Produto> produtos = repository.findAll();
         model.addAttribute("produtos", produtos);
-        return "admin/home";
+        return "admin/produtos";
     }
 }
