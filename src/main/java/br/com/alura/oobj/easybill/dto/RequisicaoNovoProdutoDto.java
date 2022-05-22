@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
-public class RequisicaoNovoProduto {
+public class RequisicaoNovoProdutoDto {
     @NotBlank
     @Size(max = 150)
     private String nomeProduto;

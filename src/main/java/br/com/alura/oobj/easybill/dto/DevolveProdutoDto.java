@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DevolveProduto {
+public class DevolveProdutoDto {
 
     private Long id;
 
@@ -38,7 +38,7 @@ public class DevolveProduto {
         return classeFiscalProduto;
     }
 
-    public DevolveProduto(Produto produto){
+    public DevolveProdutoDto(Produto produto){
         this.id = produto.getId();
         this.nomeProduto = produto.getNomeProduto();
         this.descricaoProduto = getDescricaoTruncada(produto.getDescricaoProduto());
@@ -46,9 +46,9 @@ public class DevolveProduto {
         this.classeFiscalProduto = produto.getClasseFiscalProduto();
     }
 
-    public static List<DevolveProduto> converter(List<Produto> produtos){
+    public static List<DevolveProdutoDto> converter(List<Produto> produtos){
         return produtos.stream()
-                .map(DevolveProduto::new)
+                .map(DevolveProdutoDto::new)
                 .collect(Collectors.toList());
     }
     public String getDescricaoTruncada(String descricaoProduto) {
