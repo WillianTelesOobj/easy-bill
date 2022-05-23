@@ -1,47 +1,44 @@
-package br.com.alura.oobj.easybill.model;
+package br.com.alura.oobj.easybill.dto;
 
-import javax.persistence.*;
+import br.com.alura.oobj.easybill.model.Cliente;
+import org.hibernate.validator.constraints.Length;
 
-@Entity
-public class Cliente {
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class RequisicaoNovoClienteDto {
 
-    @Column(nullable = false, name = "nomeCompletoCliente")
+    @NotBlank
     private String nomeCompletoCliente;
 
-    @Column(nullable = false, length = 14, name = "cpfCliente")
+    @NotBlank
+    @Length(min=14, max=14)
+    @Pattern(regexp = "^[\\d]{3}[.][\\d]{3}[.][\\d]{3}[-][\\d]{2}+$")
     private String cpfCliente;
 
-    @Column(nullable = false, length = 11, name = "telefoneCelularCliente")
+    @NotBlank
+    @Length(min=10, max=11)
     private String telefoneCelularCliente;
 
-    @Column(nullable = false, name = "emailCliente")
+    @NotBlank
     private String emailCliente;
 
-    @Column(nullable = false, name = "ruaEnderecoCliente")
+    @NotBlank
     private String ruaEnderecoCliente;
 
-    @Column(nullable = false, name = "numeroEnderecoCliente")
+    @NotBlank
     private String numeroEnderecoCliente;
 
-    @Column(name = "complementoEnderecoCliente")
     private String complementoEnderecoCliente;
 
-    @Column(nullable = false, name = "bairroEnderecoCliente")
+    @NotBlank
     private String bairroEnderecoCliente;
 
-    @Column(nullable = false, name = "cidadeEnderecoCliente")
+    @NotBlank
     private String cidadeEnderecoCliente;
 
-    @Column(nullable = false, name = "estadoEnderecoCliente")
+    @NotBlank
     private String estadoEnderecoCliente;
-
-    public long getId() {
-        return id;
-    }
 
     public String getNomeCompletoCliente() {
         return nomeCompletoCliente;
@@ -59,12 +56,12 @@ public class Cliente {
         this.cpfCliente = cpfCliente;
     }
 
-    public String getTelefoneCliente() {
+    public String getTelefoneCelularCliente() {
         return telefoneCelularCliente;
     }
 
-    public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCelularCliente = telefoneCliente;
+    public void setTelefoneCelularCliente(String telefoneCelularCliente) {
+        this.telefoneCelularCliente = telefoneCelularCliente;
     }
 
     public String getEmailCliente() {
@@ -121,5 +118,37 @@ public class Cliente {
 
     public void setEstadoEnderecoCliente(String estadoEnderecoCliente) {
         this.estadoEnderecoCliente = estadoEnderecoCliente;
+    }
+
+    public Cliente toCliente() {
+        Cliente cliente = new Cliente();
+        cliente.setNomeCompletoCliente(nomeCompletoCliente);
+        cliente.setCpfCliente(cpfCliente);
+        cliente.setTelefoneCliente(telefoneCelularCliente);
+        cliente.setEmailCliente(emailCliente);
+        cliente.setRuaEnderecoCliente(ruaEnderecoCliente);
+        cliente.setNumeroEnderecoCliente(numeroEnderecoCliente);
+        cliente.setComplementoEnderecoCliente(complementoEnderecoCliente);
+        cliente.setBairroEnderecoCliente(bairroEnderecoCliente);
+        cliente.setCidadeEnderecoCliente(cidadeEnderecoCliente);
+        cliente.setEstadoEnderecoCliente(estadoEnderecoCliente);
+        return cliente;
+    }
+
+    public RequisicaoNovoClienteDto() {
+
+    }
+
+    public RequisicaoNovoClienteDto(Cliente cliente) {
+        this.nomeCompletoCliente = cliente.getNomeCompletoCliente();
+        this.cpfCliente = cliente.getCpfCliente();
+        this.telefoneCelularCliente = cliente.getTelefoneCliente();
+        this.emailCliente = cliente.getEmailCliente();
+        this.ruaEnderecoCliente = cliente.getRuaEnderecoCliente();
+        this.numeroEnderecoCliente = cliente.getNumeroEnderecoCliente();
+        this.complementoEnderecoCliente = cliente.getComplementoEnderecoCliente();
+        this.bairroEnderecoCliente = cliente.getBairroEnderecoCliente();
+        this.cidadeEnderecoCliente = cliente.getCidadeEnderecoCliente();
+        this.estadoEnderecoCliente = cliente.getEstadoEnderecoCliente();
     }
 }
