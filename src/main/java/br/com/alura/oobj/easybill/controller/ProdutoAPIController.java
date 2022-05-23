@@ -36,7 +36,9 @@ public class ProdutoAPIController {
     @GetMapping("/produtos/{id}")
     public ResponseEntity<DevolveProdutoDto> devolveProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
-        if(produto.isPresent()) return ResponseEntity.ok(new DevolveProdutoDto(produto.get()));
+        if(produto.isPresent()) {
+            return ResponseEntity.ok(new DevolveProdutoDto(produto.get()));
+        }
         return ResponseEntity.notFound().build();
     }
 
