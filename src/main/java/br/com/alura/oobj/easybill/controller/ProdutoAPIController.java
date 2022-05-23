@@ -15,7 +15,7 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("api")
+@RequestMapping("/api")
 @RestController
 public class ProdutoAPIController {
 
@@ -38,5 +38,18 @@ public class ProdutoAPIController {
         Optional<Produto> produto = produtoRepository.findById(id);
         if(produto.isPresent()) return ResponseEntity.ok(new DevolveProdutoDto(produto.get()));
         return ResponseEntity.notFound().build();
+    }
+
+    @PostMapping("/admin/produtos")
+    public ResponseEntity<RequisicaoNovoProdutoDto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, UriComponentsBuilder uriBuilder, BindingResult result) {
+        precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProdutoDto, result);
+        if(result.hasErrors()){
+            return ResponseEntity.badRequest().body(new RequisicaoNovoProdutoDto());
+        }
+        Produto produto = requisicaoNovoProdutoDto.toProduto();
+        produtoRepository.save(produto);
+
+        URI uri = uriBuilder.path("/api/admin/produtos/{id}").buildAndExpand(produto.getId()).toUri();
+        return ResponseEntity.created(uri).body(new RequisicaoNovoProdutoDto(produto));
     }
 }

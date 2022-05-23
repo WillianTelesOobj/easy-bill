@@ -88,4 +88,17 @@ public class RequisicaoNovoProdutoDto {
         produto.setClasseFiscalProduto(classeFiscalProduto);
         return produto;
     }
+
+    public RequisicaoNovoProdutoDto() {
+
+    }
+
+    public RequisicaoNovoProdutoDto(Produto produto) {
+        this.nomeProduto = produto.getNomeProduto();
+        this.urlProduto = produto.getUrlProduto();
+        this.descricaoProduto = produto.getDescricaoProduto();
+        this.precoProduto = produto.getPrecoProduto();
+        this.precoPromocionalProduto = produto.getPrecoPromocionalProduto();
+        this.classeFiscalProduto = produto.getClasseFiscalProduto();
+    }
 }
