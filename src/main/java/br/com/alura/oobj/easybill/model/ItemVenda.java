@@ -11,60 +11,58 @@ public class ItemVenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "quantidadeItemVenda")
-    private Integer quantidadeItemVenda;
+    @Column(nullable = false, name = "quantidade")
+    private Integer quantidade;
 
-    @Column(length = 500, name = "observacaoItemVenda")
-    private String observacaoItemVenda;
+    @Column(length = 500, name = "observacao")
+    private String observacao;
 
-    @Column(nullable = false, name = "precoUnitarioItemVenda")
-    private BigDecimal precoUnitarioItemVenda;
+    @Column(nullable = false, name = "preco_unitario")
+    private BigDecimal precoUnitario;
 
-    @Column(name = "precoUnitarioPromocionalItemVenda")
-    private BigDecimal precoUnitarioPromocionalItemVenda;
+    @Column(name = "preco_unitario_promocional")
+    private BigDecimal precoUnitarioPromocional;
 
     @ManyToOne
-//    @Column(nullable = false, name = "venda_id")
     private Venda venda;
 
     @ManyToOne
-//    @Column(nullable = false, name = "produto_id")
     private Produto produto;
 
     public Long getId() {
         return id;
     }
 
-    public Integer getQuantidadeItemVenda() {
-        return quantidadeItemVenda;
+    public Integer getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadeItemVenda(Integer quantidadeItemVenda) {
-        this.quantidadeItemVenda = quantidadeItemVenda;
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
-    public String getObservacaoItemVenda() {
-        return observacaoItemVenda;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setObservacaoItemVenda(String observacaoItemVenda) {
-        this.observacaoItemVenda = observacaoItemVenda;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
-    public BigDecimal getPrecoUnitarioItemVenda() {
-        return precoUnitarioItemVenda;
+    public BigDecimal getPrecoUnitario() {
+        return precoUnitario;
     }
 
-    public void setPrecoUnitarioItemVenda(BigDecimal precoUnitarioItemVenda) {
-        this.precoUnitarioItemVenda = precoUnitarioItemVenda;
+    public void setPrecoUnitario(BigDecimal precoUnitario) {
+        this.precoUnitario = precoUnitario;
     }
 
-    public BigDecimal getPrecoUnitarioPromocionalItemVenda() {
-        return precoUnitarioPromocionalItemVenda;
+    public BigDecimal getPrecoUnitarioPromocional() {
+        return precoUnitarioPromocional;
     }
 
-    public void setPrecoUnitarioPromocionalItemVenda(BigDecimal precoUnitarioPromocionalItemVenda) {
-        this.precoUnitarioPromocionalItemVenda = precoUnitarioPromocionalItemVenda;
+    public void setPrecoUnitarioPromocional(BigDecimal precoUnitarioPromocional) {
+        this.precoUnitarioPromocional = precoUnitarioPromocional;
     }
 
     public Venda getVenda() {

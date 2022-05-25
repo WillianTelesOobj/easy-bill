@@ -11,34 +11,34 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, name = "dataHoraVenda")
-    private LocalDateTime dataHoraVenda; //coloco  = LocalDateTime.now()?
+    @Column(nullable = false, name = "data_criacao")
+    private LocalDateTime dataCriacao;
 
-    @Column(nullable = false, name = "statusVenda")
-    private Enum<StatusVenda> statusVenda;
+    @Enumerated(value = EnumType.STRING)
+    @Column(nullable = false, name = "status")
+    private StatusVenda status;
 
     @ManyToOne
-//    @Column(nullable = false, name = "cliente_id")
     private Cliente cliente;
 
     public Long getId() {
         return id;
     }
 
-    public LocalDateTime getDataHoraVenda() {
-        return dataHoraVenda;
+    public LocalDateTime getDataCriacao() {
+        return dataCriacao;
     }
 
-    public void setDataHoraVenda(LocalDateTime dataHoraVenda) {
-        this.dataHoraVenda = dataHoraVenda;
+    public void setDataCriacao(LocalDateTime dataCriacao) {
+        this.dataCriacao = dataCriacao;
     }
 
-    public Enum<StatusVenda> getStatusVenda() {
-        return statusVenda;
+    public StatusVenda getStatus() {
+        return status;
     }
 
-    public void setStatusVenda(Enum<StatusVenda> statusVenda) {
-        this.statusVenda = statusVenda;
+    public void setStatus(StatusVenda status) {
+        this.status = status;
     }
 
     public Cliente getCliente() {
