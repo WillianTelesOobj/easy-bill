@@ -37,10 +37,10 @@ public class ClienteAPIController {
     }
 
     @GetMapping("/api/clientes/{id}")
-    public ResponseEntity<RequisicaoNovoClienteDto> devolveClientePorId(@PathVariable Long id) {
+    public ResponseEntity<DevolveClienteDto> devolveClientePorId(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
         if(cliente.isPresent()) {
-            return ResponseEntity.ok(new RequisicaoNovoClienteDto(cliente.get()));
+            return ResponseEntity.ok(new DevolveClienteDto(cliente.get()));
         }
         return ResponseEntity.notFound().build();
     }
