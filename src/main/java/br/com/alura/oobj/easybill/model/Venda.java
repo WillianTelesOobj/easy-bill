@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "vendas")
 public class Venda {
 
     @Id
@@ -17,7 +18,7 @@ public class Venda {
     private Enum<StatusVenda> statusVenda;
 
     @ManyToOne
-//    @Column(nullable = false, name = "cliente")
+//    @Column(nullable = false, name = "cliente_id")
     private Cliente cliente;
 
     public Long getId() {
