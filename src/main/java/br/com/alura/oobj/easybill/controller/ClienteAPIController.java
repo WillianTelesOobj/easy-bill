@@ -45,20 +45,13 @@ public class ClienteAPIController {
         return ResponseEntity.notFound().build();
     }
 
-//    @GetMapping("/admin/clientes")
-//    public List<DevolveClienteDto> devolveTodosClientes(){
-//        List<Cliente> clientes = clienteRepository.findAll();
-//        return DevolveClienteDto.converter(clientes);
-//    }
-
     @GetMapping("/admin/clientes")
-    public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(value = "estado", defaultValue = "") String estado){
+    public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(required = false) Optional<String> estado){
         if(estado.isEmpty()) {
-            System.out.println(estado);
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);
         }
-        List<Cliente> clientesPorEstado = clienteRepository.findByEstadoEnderecoCliente(estado);
+        List<Cliente> clientesPorEstado = clienteRepository.findByEstadoEnderecoCliente(estado.get());
         return DevolveClienteDto.converter(clientesPorEstado);
     }
 }
