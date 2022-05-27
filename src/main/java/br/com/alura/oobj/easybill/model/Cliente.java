@@ -3,123 +3,124 @@ package br.com.alura.oobj.easybill.model;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "clientes")
 public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, name = "nomeCompletoCliente")
-    private String nomeCompletoCliente;
+    @Column(nullable = false, name = "nome")
+    private String nome;
 
-    @Column(nullable = false, length = 14, name = "cpfCliente")
-    private String cpfCliente;
+    @Column(nullable = false, length = 14, name = "cpf")
+    private String cpf;
 
-    @Column(nullable = false, length = 11, name = "telefoneCelularCliente")
-    private String telefoneCelularCliente;
+    @Column(nullable = false, length = 11, name = "telefone")
+    private String telefone;
 
-    @Column(nullable = false, name = "emailCliente")
-    private String emailCliente;
+    @Column(nullable = false, name = "email")
+    private String email;
 
-    @Column(nullable = false, name = "ruaEnderecoCliente")
-    private String ruaEnderecoCliente;
+    @Column(nullable = false, name = "rua")
+    private String rua;
 
-    @Column(nullable = false, name = "numeroEnderecoCliente")
-    private String numeroEnderecoCliente;
+    @Column(nullable = false, name = "numero")
+    private String numero;
 
-    @Column(name = "complementoEnderecoCliente")
-    private String complementoEnderecoCliente;
+    @Column(name = "complemento")
+    private String complemento;
 
-    @Column(nullable = false, name = "bairroEnderecoCliente")
-    private String bairroEnderecoCliente;
+    @Column(nullable = false, name = "bairro")
+    private String bairro;
 
-    @Column(nullable = false, name = "cidadeEnderecoCliente")
-    private String cidadeEnderecoCliente;
+    @Column(nullable = false, name = "cidade")
+    private String cidade;
 
-    @Column(nullable = false, name = "estadoEnderecoCliente")
-    private String estadoEnderecoCliente;
+    @Column(nullable = false, name = "estado")
+    private String estado;
 
     public long getId() {
         return id;
     }
 
-    public String getNomeCompletoCliente() {
-        return nomeCompletoCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeCompletoCliente(String nomeCompletoCliente) {
-        this.nomeCompletoCliente = nomeCompletoCliente;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfCliente(String cpfCliente) {
-        this.cpfCliente = cpfCliente;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getTelefoneCliente() {
-        return telefoneCelularCliente;
+        return telefone;
     }
 
     public void setTelefoneCliente(String telefoneCliente) {
-        this.telefoneCelularCliente = telefoneCliente;
+        this.telefone = telefoneCliente;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getRuaEnderecoCliente() {
-        return ruaEnderecoCliente;
+    public String getRua() {
+        return rua;
     }
 
-    public void setRuaEnderecoCliente(String ruaEnderecoCliente) {
-        this.ruaEnderecoCliente = ruaEnderecoCliente;
+    public void setRua(String rua) {
+        this.rua = rua;
     }
 
-    public String getNumeroEnderecoCliente() {
-        return numeroEnderecoCliente;
+    public String getNumero() {
+        return numero;
     }
 
-    public void setNumeroEnderecoCliente(String numeroEnderecoCliente) {
-        this.numeroEnderecoCliente = numeroEnderecoCliente;
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
-    public String getComplementoEnderecoCliente() {
-        return complementoEnderecoCliente;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public void setComplementoEnderecoCliente(String complementoEnderecoCliente) {
-        this.complementoEnderecoCliente = complementoEnderecoCliente;
+    public void setComplemento(String complemento) {
+        this.complemento = complemento;
     }
 
-    public String getBairroEnderecoCliente() {
-        return bairroEnderecoCliente;
+    public String getBairro() {
+        return bairro;
     }
 
-    public void setBairroEnderecoCliente(String bairroEnderecoCliente) {
-        this.bairroEnderecoCliente = bairroEnderecoCliente;
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
     }
 
-    public String getCidadeEnderecoCliente() {
-        return cidadeEnderecoCliente;
+    public String getCidade() {
+        return cidade;
     }
 
-    public void setCidadeEnderecoCliente(String cidadeEnderecoCliente) {
-        this.cidadeEnderecoCliente = cidadeEnderecoCliente;
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
-    public String getEstadoEnderecoCliente() {
-        return estadoEnderecoCliente;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setEstadoEnderecoCliente(String estadoEnderecoCliente) {
-        this.estadoEnderecoCliente = estadoEnderecoCliente;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

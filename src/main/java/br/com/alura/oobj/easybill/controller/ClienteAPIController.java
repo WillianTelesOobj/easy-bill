@@ -51,7 +51,7 @@ public class ClienteAPIController {
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);
         }
-        List<Cliente> clientesPorEstado = clienteRepository.findByEstadoEnderecoCliente(estado.get());
+        List<Cliente> clientesPorEstado = clienteRepository.findByEstado(estado.get());
         return DevolveClienteDto.converter(clientesPorEstado);
     }
 }

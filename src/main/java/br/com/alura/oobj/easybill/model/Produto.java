@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "produtos")
 public class Produto {
 
     @Id
@@ -16,17 +17,17 @@ public class Produto {
     @Column(length = 500, nullable = false, name = "url")
     private String url;
 
-    @Column(length = 1000, name = "descricaoProduto")
-    private String descricaoProduto;
+    @Column(length = 1000, name = "descricao_produto")
+    private String descricao;
 
-    @Column(nullable = false, name = "precoProduto")
-    private BigDecimal precoProduto;
+    @Column(nullable = false, name = "preco")
+    private BigDecimal preco;
 
-    @Column(name = "precoPromocionalProduto")
-    private BigDecimal precoPromocionalProduto;
+    @Column(name = "preco_promocional")
+    private BigDecimal precoPromocional;
 
-    @Column(length = 10, nullable = false, name = "classeFiscalProduto")
-    private String classeFiscalProduto;
+    @Column(length = 10, nullable = false, name = "classe_fiscal")
+    private String classeFiscal;
 
     public Long getId() {
         return id;
@@ -48,35 +49,35 @@ public class Produto {
         this.url = url;
     }
 
-    public String getDescricaoProduto() {
-        return descricaoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public BigDecimal getPrecoProduto() {
-        return precoProduto;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPrecoProduto(BigDecimal precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 
-    public BigDecimal getPrecoPromocionalProduto() {
-        return precoPromocionalProduto;
+    public BigDecimal getPrecoPromocional() {
+        return precoPromocional;
     }
 
-    public void setPrecoPromocionalProduto(BigDecimal precoPromocionalProduto) {
-        this.precoPromocionalProduto = precoPromocionalProduto;
+    public void setPrecoPromocional(BigDecimal precoPromocional) {
+        this.precoPromocional = precoPromocional;
     }
 
-    public String getClasseFiscalProduto() {
-        return classeFiscalProduto;
+    public String getClasseFiscal() {
+        return classeFiscal;
     }
 
-    public void setClasseFiscalProduto(String classeFiscalProduto) {
-        this.classeFiscalProduto = classeFiscalProduto;
+    public void setClasseFiscal(String classeFiscal) {
+        this.classeFiscal = classeFiscal;
     }
 }

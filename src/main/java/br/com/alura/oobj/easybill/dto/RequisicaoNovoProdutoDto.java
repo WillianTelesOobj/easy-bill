@@ -16,19 +16,19 @@ public class RequisicaoNovoProdutoDto {
     private String url;
 
     @Size(max = 1000)
-    private String descricaoProduto;
+    private String descricao;
 
     @NotNull
     @Positive
-    private BigDecimal precoProduto;
+    private BigDecimal preco;
 
     @Positive
-    private BigDecimal precoPromocionalProduto;
+    private BigDecimal precoPromocional;
 
     @NotBlank
     @Length(min=10, max=10)
     @Pattern(regexp = "^[\\d]{4}[.][\\d]{2}[.][\\d]{2}+$")
-    private String classeFiscalProduto;
+    private String classeFiscal;
 
     public String getNome() {
         return nome;
@@ -46,46 +46,46 @@ public class RequisicaoNovoProdutoDto {
         this.url = url;
     }
 
-    public String getDescricaoProduto() {
-        return descricaoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public BigDecimal getPrecoProduto() {
-        return precoProduto;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public void setPrecoProduto(BigDecimal precoProduto) {
-        this.precoProduto = precoProduto;
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
     }
 
-    public BigDecimal getPrecoPromocionalProduto() {
-        return precoPromocionalProduto;
+    public BigDecimal getPrecoPromocional() {
+        return precoPromocional;
     }
 
-    public void setPrecoPromocionalProduto(BigDecimal precoPromocionalProduto) {
-        this.precoPromocionalProduto = precoPromocionalProduto;
+    public void setPrecoPromocional(BigDecimal precoPromocional) {
+        this.precoPromocional = precoPromocional;
     }
 
-    public String getClasseFiscalProduto() {
-        return classeFiscalProduto;
+    public String getClasseFiscal() {
+        return classeFiscal;
     }
 
-    public void setClasseFiscalProduto(String classeFiscalProduto) {
-        this.classeFiscalProduto = classeFiscalProduto;
+    public void setClasseFiscal(String classeFiscal) {
+        this.classeFiscal = classeFiscal;
     }
 
     public Produto toProduto() {
         Produto produto = new Produto();
         produto.setNome(nome);
-        produto.setDescricaoProduto(descricaoProduto);
+        produto.setDescricao(descricao);
         produto.setUrl(url);
-        produto.setPrecoProduto(precoProduto);
-        produto.setPrecoPromocionalProduto(precoPromocionalProduto);
-        produto.setClasseFiscalProduto(classeFiscalProduto);
+        produto.setPreco(preco);
+        produto.setPrecoPromocional(precoPromocional);
+        produto.setClasseFiscal(classeFiscal);
         return produto;
     }
 
@@ -96,9 +96,9 @@ public class RequisicaoNovoProdutoDto {
     public RequisicaoNovoProdutoDto(Produto produto) {
         this.nome = produto.getNome();
         this.url = produto.getUrl();
-        this.descricaoProduto = produto.getDescricaoProduto();
-        this.precoProduto = produto.getPrecoProduto();
-        this.precoPromocionalProduto = produto.getPrecoPromocionalProduto();
-        this.classeFiscalProduto = produto.getClasseFiscalProduto();
+        this.descricao = produto.getDescricao();
+        this.preco = produto.getPreco();
+        this.precoPromocional = produto.getPrecoPromocional();
+        this.classeFiscal = produto.getClasseFiscal();
     }
 }

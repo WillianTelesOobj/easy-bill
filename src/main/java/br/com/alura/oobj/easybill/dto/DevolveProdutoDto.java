@@ -12,11 +12,11 @@ public class DevolveProdutoDto {
 
     private String nome;
 
-    private String descricaoProduto;
+    private String descricao;
 
-    private BigDecimal precoProduto;
+    private BigDecimal preco;
 
-    private String classeFiscalProduto;
+    private String classeFiscal;
 
     public Long getId() {
         return id;
@@ -26,24 +26,24 @@ public class DevolveProdutoDto {
         return nome;
     }
 
-    public String getDescricaoProduto() {
-        return descricaoProduto;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public BigDecimal getPrecoProduto() {
-        return precoProduto;
+    public BigDecimal getPreco() {
+        return preco;
     }
 
-    public String getClasseFiscalProduto() {
-        return classeFiscalProduto;
+    public String getClasseFiscal() {
+        return classeFiscal;
     }
 
     public DevolveProdutoDto(Produto produto){
         this.id = produto.getId();
         this.nome = produto.getNome();
-        this.descricaoProduto = getDescricaoProdutoTruncada(produto.getDescricaoProduto());
-        this.precoProduto = produto.getPrecoPromocionalProduto() != null ? produto.getPrecoPromocionalProduto() : produto.getPrecoProduto();
-        this.classeFiscalProduto = produto.getClasseFiscalProduto();
+        this.descricao = getDescricaoProdutoTruncada(produto.getDescricao());
+        this.preco = produto.getPrecoPromocional() != null ? produto.getPrecoPromocional() : produto.getPreco();
+        this.classeFiscal = produto.getClasseFiscal();
     }
 
     public static List<DevolveProdutoDto> converter(List<Produto> produtos){
@@ -52,11 +52,11 @@ public class DevolveProdutoDto {
                 .collect(Collectors.toList());
     }
 
-    public String getDescricaoProdutoTruncada(String descricaoProduto) {
-        if (descricaoProduto.length() <= 250) {
-            return descricaoProduto;
+    public String getDescricaoProdutoTruncada(String descricao) {
+        if (descricao.length() <= 250) {
+            return descricao;
         }
-        String descricaoProdutoTruncada = descricaoProduto.substring(0,247);
+        String descricaoProdutoTruncada = descricao.substring(0,247);
         return descricaoProdutoTruncada + "...";
     }
 }

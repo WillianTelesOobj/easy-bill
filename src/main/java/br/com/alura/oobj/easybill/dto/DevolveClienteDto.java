@@ -7,77 +7,77 @@ import java.util.stream.Collectors;
 
 public class DevolveClienteDto {
 
-    private String nomeCompletoCliente;
+    private String nome;
 
-    private String cpfCliente;
+    private String cpf;
 
-    private String telefoneCelularCliente;
+    private String telefone;
 
-    private String emailCliente;
+    private String email;
 
-    private String ruaEnderecoCliente;
+    private String rua;
 
-    private String numeroEnderecoCliente;
+    private String numero;
 
-    private String complementoEnderecoCliente;
+    private String complemento;
 
-    private String bairroEnderecoCliente;
+    private String bairro;
 
-    private String cidadeEnderecoCliente;
+    private String cidade;
 
-    private String estadoEnderecoCliente;
+    private String estado;
 
-    public String getNomeCompletoCliente() {
-        return nomeCompletoCliente;
+    public String getNome() {
+        return nome;
     }
 
-    public String getCpfCliente() {
-        return cpfCliente;
+    public String getCpf() {
+        return cpf;
     }
 
-    public String getTelefoneCelularCliente() {
-        return telefoneCelularCliente;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getEmail() {
+        return email;
     }
 
-    public String getRuaEnderecoCliente() {
-        return ruaEnderecoCliente;
+    public String getRua() {
+        return rua;
     }
 
-    public String getNumeroEnderecoCliente() {
-        return numeroEnderecoCliente;
+    public String getNumero() {
+        return numero;
     }
 
-    public String getComplementoEnderecoCliente() {
-        return complementoEnderecoCliente;
+    public String getComplemento() {
+        return complemento;
     }
 
-    public String getBairroEnderecoCliente() {
-        return bairroEnderecoCliente;
+    public String getBairro() {
+        return bairro;
     }
 
-    public String getCidadeEnderecoCliente() {
-        return cidadeEnderecoCliente;
+    public String getCidade() {
+        return cidade;
     }
 
-    public String getEstadoEnderecoCliente() {
-        return estadoEnderecoCliente;
+    public String getEstado() {
+        return estado;
     }
 
     public DevolveClienteDto(Cliente cliente) {
-        this.nomeCompletoCliente = cliente.getNomeCompletoCliente();
-        this.cpfCliente = cliente.getCpfCliente();
-        this.telefoneCelularCliente = cliente.getTelefoneCliente();
-        this.emailCliente = cliente.getEmailCliente();
-        this.ruaEnderecoCliente = cliente.getRuaEnderecoCliente();
-        this.numeroEnderecoCliente = cliente.getNumeroEnderecoCliente();
-        this.complementoEnderecoCliente = cliente.getComplementoEnderecoCliente();
-        this.bairroEnderecoCliente = cliente.getBairroEnderecoCliente();
-        this.cidadeEnderecoCliente = cliente.getCidadeEnderecoCliente();
-        this.estadoEnderecoCliente = cliente.getEstadoEnderecoCliente();
+        this.nome = cliente.getNome();
+        this.cpf = cliente.getCpf();
+        this.telefone = cliente.getTelefoneCliente();
+        this.email = cliente.getEmail();
+        this.rua = cliente.getRua();
+        this.numero = cliente.getNumero();
+        this.complemento = cliente.getComplemento();
+        this.bairro = cliente.getBairro();
+        this.cidade = cliente.getCidade();
+        this.estado = cliente.getEstado();
     }
 
     public static List<DevolveClienteDto> converter(List<Cliente> clientes) {
