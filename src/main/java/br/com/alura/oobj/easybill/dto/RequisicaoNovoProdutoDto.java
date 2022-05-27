@@ -13,7 +13,7 @@ public class RequisicaoNovoProdutoDto {
 
     @NotBlank
     @Size(max = 500)
-    private String urlProduto;
+    private String url;
 
     @Size(max = 1000)
     private String descricaoProduto;
@@ -38,12 +38,12 @@ public class RequisicaoNovoProdutoDto {
         this.nome = nome;
     }
 
-    public String getUrlProduto() {
-        return urlProduto;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlProduto(String urlProduto) {
-        this.urlProduto = urlProduto;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDescricaoProduto() {
@@ -82,7 +82,7 @@ public class RequisicaoNovoProdutoDto {
         Produto produto = new Produto();
         produto.setNome(nome);
         produto.setDescricaoProduto(descricaoProduto);
-        produto.setUrlProduto(urlProduto);
+        produto.setUrl(url);
         produto.setPrecoProduto(precoProduto);
         produto.setPrecoPromocionalProduto(precoPromocionalProduto);
         produto.setClasseFiscalProduto(classeFiscalProduto);
@@ -95,7 +95,7 @@ public class RequisicaoNovoProdutoDto {
 
     public RequisicaoNovoProdutoDto(Produto produto) {
         this.nome = produto.getNome();
-        this.urlProduto = produto.getUrlProduto();
+        this.url = produto.getUrl();
         this.descricaoProduto = produto.getDescricaoProduto();
         this.precoProduto = produto.getPrecoProduto();
         this.precoPromocionalProduto = produto.getPrecoPromocionalProduto();

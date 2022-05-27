@@ -13,8 +13,8 @@ public class Produto {
     @Column(length = 150, nullable = false, name = "nome")
     private String nome;
 
-    @Column(length = 500, nullable = false, name = "urlProduto")
-    private String urlProduto;
+    @Column(length = 500, nullable = false, name = "url")
+    private String url;
 
     @Column(length = 1000, name = "descricaoProduto")
     private String descricaoProduto;
@@ -40,12 +40,12 @@ public class Produto {
         this.nome = nome;
     }
 
-    public String getUrlProduto() {
-        return urlProduto;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrlProduto(String urlProduto) {
-        this.urlProduto = urlProduto;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDescricaoProduto() {
