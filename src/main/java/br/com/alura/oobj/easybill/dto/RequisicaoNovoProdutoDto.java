@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public class RequisicaoNovoProdutoDto {
     @NotBlank
     @Size(max = 150)
-    private String nomeProduto;
+    private String nome;
 
     @NotBlank
     @Size(max = 500)
@@ -30,12 +30,12 @@ public class RequisicaoNovoProdutoDto {
     @Pattern(regexp = "^[\\d]{4}[.][\\d]{2}[.][\\d]{2}+$")
     private String classeFiscalProduto;
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getUrlProduto() {
@@ -80,7 +80,7 @@ public class RequisicaoNovoProdutoDto {
 
     public Produto toProduto() {
         Produto produto = new Produto();
-        produto.setNomeProduto(nomeProduto);
+        produto.setNome(nome);
         produto.setDescricaoProduto(descricaoProduto);
         produto.setUrlProduto(urlProduto);
         produto.setPrecoProduto(precoProduto);
@@ -94,7 +94,7 @@ public class RequisicaoNovoProdutoDto {
     }
 
     public RequisicaoNovoProdutoDto(Produto produto) {
-        this.nomeProduto = produto.getNomeProduto();
+        this.nome = produto.getNome();
         this.urlProduto = produto.getUrlProduto();
         this.descricaoProduto = produto.getDescricaoProduto();
         this.precoProduto = produto.getPrecoProduto();

@@ -10,7 +10,7 @@ public class DevolveProdutoDto {
 
     private Long id;
 
-    private String nomeProduto;
+    private String nome;
 
     private String descricaoProduto;
 
@@ -22,8 +22,8 @@ public class DevolveProdutoDto {
         return id;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getNome() {
+        return nome;
     }
 
     public String getDescricaoProduto() {
@@ -40,7 +40,7 @@ public class DevolveProdutoDto {
 
     public DevolveProdutoDto(Produto produto){
         this.id = produto.getId();
-        this.nomeProduto = produto.getNomeProduto();
+        this.nome = produto.getNome();
         this.descricaoProduto = getDescricaoProdutoTruncada(produto.getDescricaoProduto());
         this.precoProduto = produto.getPrecoPromocionalProduto() != null ? produto.getPrecoPromocionalProduto() : produto.getPrecoProduto();
         this.classeFiscalProduto = produto.getClasseFiscalProduto();

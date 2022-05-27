@@ -10,8 +10,8 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 150, nullable = false, name = "nomeProduto")
-    private String nomeProduto;
+    @Column(length = 150, nullable = false, name = "nome")
+    private String nome;
 
     @Column(length = 500, nullable = false, name = "urlProduto")
     private String urlProduto;
@@ -32,12 +32,12 @@ public class Produto {
         return id;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getUrlProduto() {
