@@ -18,7 +18,7 @@ import java.util.Optional;
 
 public class ClienteAPIController {
 
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
 
     public ClienteAPIController (ClienteRepository clienteRepository) {
         this.clienteRepository = clienteRepository;
@@ -39,10 +39,7 @@ public class ClienteAPIController {
     @GetMapping("/api/clientes/{id}")
     public ResponseEntity<DevolveClienteDto> devolveClientePorId(@PathVariable Long id) {
         Optional<Cliente> cliente = clienteRepository.findById(id);
-        if(cliente.isPresent()) {
-            return ResponseEntity.ok(new DevolveClienteDto(cliente.get()));
-        }
-        return ResponseEntity.notFound().build();
+        return cliente.map(value -> ResponseEntity.ok(new DevolveClienteDto(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping("/admin/clientes")
@@ -51,7 +48,7 @@ public class ClienteAPIController {
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);
         }
-        List<Cliente> clientesPorEstado = clienteRepository.findByEstado(estado.get());
+        List<Cliente> clientesPorEstado = clienteRepository.findAllByEstado(estado.get());
         return DevolveClienteDto.converter(clientesPorEstado);
     }
 }

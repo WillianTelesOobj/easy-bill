@@ -19,8 +19,8 @@ import java.util.Optional;
 @RestController
 public class ProdutoAPIController {
 
-    private ProdutoRepository produtoRepository;
-    private PrecoPromocionalValidator precoPromocionalValidator;
+    private final ProdutoRepository produtoRepository;
+    private final PrecoPromocionalValidator precoPromocionalValidator;
 
     public ProdutoAPIController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator){
         this.produtoRepository = produtoRepository;
@@ -36,10 +36,7 @@ public class ProdutoAPIController {
     @GetMapping("/produtos/{id}")
     public ResponseEntity<DevolveProdutoDto> devolveProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
-        if(produto.isPresent()) {
-            return ResponseEntity.ok(new DevolveProdutoDto(produto.get()));
-        }
-        return ResponseEntity.notFound().build();
+        return produto.map(value -> ResponseEntity.ok(new DevolveProdutoDto(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/admin/produtos")
