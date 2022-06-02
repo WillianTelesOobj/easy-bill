@@ -77,7 +77,7 @@ public class ProdutoAPIController {
 
     @DeleteMapping("/admin/produtos/{id}")
     @Transactional
-    public ResponseEntity<?> delete(@PathVariable Long id) {
+    public ResponseEntity<?> deletarProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);
         if (produtoOptional.isEmpty()) {
             return ResponseEntity.notFound().build();
