@@ -18,7 +18,7 @@ public class DevolveVendaDto {
 
     private Long clienteId;
 
-    private List<ItemVenda> itens;
+    private List<DevolveItemVendaDto> itens;
 
     public Long getId() {
         return id;
@@ -48,20 +48,20 @@ public class DevolveVendaDto {
         this.clienteId = clienteId;
     }
 
-    public List<ItemVenda> getItens() {
+    public List<DevolveItemVendaDto> getItens() {
         return itens;
     }
 
-    public void setItens(List<ItemVenda> itens) {
+    public void setItens(List<DevolveItemVendaDto> itens) {
         this.itens = itens;
     }
 
-    public DevolveVendaDto(Optional<Venda> venda, List<ItemVenda> itemVenda) {
+    public DevolveVendaDto(Optional<Venda> venda, List<ItemVenda> itens) {
         this.id = venda.get().getId();
         this.status = venda.get().getStatus();
         this.dataCriacao = venda.get().getDataCriacao();
         this.clienteId = venda.get().getCliente().getId();
-        this.itens = itemVenda;
+        this.itens = DevolveItemVendaDto.converter(itens);
     }
 
     public static DevolveVendaDto converter(Optional<Venda> venda, List<ItemVenda> itemVendas){
