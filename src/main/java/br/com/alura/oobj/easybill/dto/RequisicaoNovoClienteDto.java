@@ -1,6 +1,7 @@
 package br.com.alura.oobj.easybill.dto;
 
 import br.com.alura.oobj.easybill.model.Cliente;
+import br.com.alura.oobj.easybill.model.Endereco;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -121,17 +122,20 @@ public class RequisicaoNovoClienteDto {
     }
 
     public Cliente toCliente() {
+        Endereco endereco = new Endereco();
+        endereco.setRua(rua);
+        endereco.setNumero(numero);
+        endereco.setComplemento(complemento);
+        endereco.setBairro(bairro);
+        endereco.setCidade(cidade);
+        endereco.setEstado(estado);
+
         Cliente cliente = new Cliente();
         cliente.setNome(nome);
         cliente.setCpf(cpf);
         cliente.setTelefoneCliente(telefone);
         cliente.setEmail(email);
-        cliente.setRua(rua);
-        cliente.setNumero(numero);
-        cliente.setComplemento(complemento);
-        cliente.setBairro(bairro);
-        cliente.setCidade(cidade);
-        cliente.setEstado(estado);
+        cliente.setEndereco(endereco);
         return cliente;
     }
 
@@ -144,11 +148,11 @@ public class RequisicaoNovoClienteDto {
         this.cpf = cliente.getCpf();
         this.telefone = cliente.getTelefoneCliente();
         this.email = cliente.getEmail();
-        this.rua = cliente.getRua();
-        this.numero = cliente.getNumero();
-        this.complemento = cliente.getComplemento();
-        this.bairro = cliente.getBairro();
-        this.cidade = cliente.getCidade();
-        this.estado = cliente.getEstado();
+        this.rua = cliente.getEndereco().getRua();
+        this.numero = cliente.getEndereco().getNumero();
+        this.complemento = cliente.getEndereco().getComplemento();
+        this.bairro = cliente.getEndereco().getBairro();
+        this.cidade = cliente.getEndereco().getCidade();
+        this.estado = cliente.getEndereco().getEstado();
     }
 }

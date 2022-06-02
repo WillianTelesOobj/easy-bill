@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-
 public class ClienteAPIController {
 
     private final ClienteRepository clienteRepository;
@@ -48,7 +47,7 @@ public class ClienteAPIController {
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);
         }
-        List<Cliente> clientesPorEstado = clienteRepository.findAllByEstado(estado.get());
+        List<Cliente> clientesPorEstado = clienteRepository.findAllByEnderecoEstado(estado.get());
         return DevolveClienteDto.converter(clientesPorEstado);
     }
 }
