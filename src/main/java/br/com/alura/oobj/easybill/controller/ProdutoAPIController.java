@@ -5,6 +5,10 @@ import br.com.alura.oobj.easybill.dto.RequisicaoNovoProdutoDto;
 import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
 import br.com.alura.oobj.easybill.validator.PrecoPromocionalValidator;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -27,10 +31,16 @@ public class ProdutoAPIController {
         this.precoPromocionalValidator = precoPromocionalValidator;
     }
 
-    @GetMapping("/produtos")
+    @GetMapping("/produtos/listagem")
     public List<DevolveProdutoDto> listagemDeProdutos(){
         List<Produto> produtos = produtoRepository.findAll();
         return DevolveProdutoDto.converter(produtos);
+    }
+
+    @GetMapping("/produtos")
+    public ResponseEntity<Page<DevolveProdutoDto>> listagemDeProdutosPorPagina(@PageableDefault(size = 5,sort="nome", direction = Sort.Direction.ASC) Pageable pagina) {
+        Page<Produto> produtos = produtoRepository.findAll(pagina);
+        return ResponseEntity.ok(DevolveProdutoDto.converterPageDevolveProdutoDto(produtos));
     }
 
     @GetMapping("/produtos/{id}")
