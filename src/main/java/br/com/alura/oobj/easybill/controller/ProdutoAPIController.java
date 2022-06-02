@@ -51,6 +51,7 @@ public class ProdutoAPIController {
     }
 
     @PostMapping("/admin/produtos")
+    @Transactional
     public ResponseEntity<RequisicaoNovoProdutoDto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, UriComponentsBuilder uriBuilder, BindingResult result) {
         precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProdutoDto, result);
         if(result.hasErrors()){
@@ -71,6 +72,17 @@ public class ProdutoAPIController {
             return ResponseEntity.notFound().build();
         }
         requisicaoNovoProdutoDto.update(id, produtoRepository);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/admin/produtos/{id}")
+    @Transactional
+    public ResponseEntity<?> delete(@PathVariable Long id) {
+        Optional<Produto> produtoOptional = produtoRepository.findById(id);
+        if (produtoOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        produtoRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
 }
