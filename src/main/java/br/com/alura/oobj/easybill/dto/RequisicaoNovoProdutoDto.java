@@ -1,6 +1,7 @@
 package br.com.alura.oobj.easybill.dto;
 
 import br.com.alura.oobj.easybill.model.Produto;
+import br.com.alura.oobj.easybill.repository.ProdutoRepository;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
@@ -100,5 +101,15 @@ public class RequisicaoNovoProdutoDto {
         this.preco = produto.getPreco();
         this.precoPromocional = produto.getPrecoPromocional();
         this.classeFiscal = produto.getClasseFiscal();
+    }
+
+    public void update(Long id, ProdutoRepository produtoRepository) {
+        Produto produto = produtoRepository.getById(id);
+        produto.setNome(nome);
+        produto.setUrl(url);
+        produto.setDescricao(descricao);
+        produto.setPreco(preco);
+        produto.setPrecoPromocional(precoPromocional);
+        produto.setClasseFiscal(classeFiscal);
     }
 }

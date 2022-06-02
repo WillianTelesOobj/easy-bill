@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -38,7 +39,7 @@ public class ProdutoAPIController {
     }
 
     @GetMapping("/produtos")
-    public ResponseEntity<Page<DevolveProdutoDto>> listagemDeProdutosPorPagina(@PageableDefault(size = 5,sort="nome", direction = Sort.Direction.ASC) Pageable pagina) {
+    public ResponseEntity<Page<DevolveProdutoDto>> listagemDeProdutosPorPagina(@PageableDefault(size = 5, sort="nome", direction = Sort.Direction.ASC) Pageable pagina) {
         Page<Produto> produtos = produtoRepository.findAll(pagina);
         return ResponseEntity.ok(DevolveProdutoDto.converterPageDevolveProdutoDto(produtos));
     }
@@ -60,5 +61,16 @@ public class ProdutoAPIController {
 
         URI uri = uriBuilder.path("/api/admin/produtos/{id}").buildAndExpand(produto.getId()).toUri();
         return ResponseEntity.created(uri).body(new RequisicaoNovoProdutoDto(produto));
+    }
+
+    @PutMapping("/admin/produtos/{id}")
+    @Transactional
+    public ResponseEntity<Void> atualizarProdutoPorId(@PathVariable Long id, @RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto) {
+        Optional<Produto> produtoOptional = produtoRepository.findById(id);
+        if (produtoOptional.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        requisicaoNovoProdutoDto.update(id, produtoRepository);
+        return ResponseEntity.ok().build();
     }
 }
