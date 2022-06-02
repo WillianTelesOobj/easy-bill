@@ -18,7 +18,7 @@ public class Venda {
     @Column(nullable = false, name = "status")
     private StatusVenda status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Cliente cliente;
 
     public Long getId() {

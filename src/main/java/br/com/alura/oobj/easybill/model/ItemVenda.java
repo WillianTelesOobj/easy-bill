@@ -23,10 +23,10 @@ public class ItemVenda {
     @Column(name = "preco_unitario_promocional")
     private BigDecimal precoUnitarioPromocional;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Venda venda;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Produto produto;
 
     public Long getId() {
