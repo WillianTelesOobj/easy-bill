@@ -38,10 +38,8 @@ public class VendaService {
                 .orElseThrow(() -> new NotFoundException("Não foi encontrodao o cliente: " + requisicaoVendaDto.getClienteId()));
         Venda venda = criaVenda(cliente);
         vendaRepository.save(venda);
-
         List<ItemVenda> itemVendas = criaItemVenda(requisicaoVendaDto, venda);
         itemVendaRepository.saveAll(itemVendas);
-
         return venda;
     }
 
@@ -55,10 +53,8 @@ public class VendaService {
 
     private List<ItemVenda> criaItemVenda(RequisicaoVendaDto requisicaoVendaDto, Venda venda) {
         List<ItemVenda> itens = new ArrayList<>();
-        requisicaoVendaDto.getItensVenda().forEach(item ->
-                itens.add(item.toItemVenda(produtoRepository, venda))
-
-        );
+        requisicaoVendaDto.getItensVenda().forEach(item ->itens
+                .add(item.toItemVenda(produtoRepository, venda)));
         return itens;
     }
 }
