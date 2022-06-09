@@ -5,6 +5,7 @@ import br.com.alura.oobj.easybill.dto.RequisicaoNovoProdutoDto;
 import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
 import br.com.alura.oobj.easybill.validator.PrecoPromocionalValidator;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -33,12 +34,14 @@ public class ProdutoAPIController {
     }
 
     @GetMapping("/produtos/listagem")
+    @Cacheable(value = "listagemDeProdutos")
     public List<DevolveProdutoDto> listagemDeProdutos(){
         List<Produto> produtos = produtoRepository.findAll();
         return DevolveProdutoDto.converter(produtos);
     }
 
     @GetMapping("/produtos")
+    @Cacheable(value = "paginacaoDeProdutos")
     public Page<DevolveProdutoDto> retornaLista(@RequestParam(value = "pagina", defaultValue = "") Integer pagina){
         if(pagina == null){
             pagina = 0;
