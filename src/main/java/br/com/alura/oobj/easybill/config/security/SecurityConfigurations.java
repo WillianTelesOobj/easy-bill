@@ -1,5 +1,6 @@
 package br.com.alura.oobj.easybill.config.security;
 
+import br.com.alura.oobj.easybill.repository.UsuarioRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -19,10 +20,12 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
 
     private final AutenticacaoService autenticacaoService;
     private final TokenService tokenService;
+    private final UsuarioRepository usuarioRepository;
 
-    public SecurityConfigurations(AutenticacaoService autenticacaoService, TokenService tokenService) {
+    public SecurityConfigurations(AutenticacaoService autenticacaoService, TokenService tokenService, UsuarioRepository usuarioRepository) {
         this.autenticacaoService = autenticacaoService;
         this.tokenService = tokenService;
+        this.usuarioRepository = usuarioRepository;
     }
 
     @Override
@@ -45,7 +48,7 @@ public class SecurityConfigurations extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and().csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService), UsernamePasswordAuthenticationFilter.class);
+                .and().addFilterBefore(new AutenticacaoViaTokenFilter(tokenService, usuarioRepository), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override

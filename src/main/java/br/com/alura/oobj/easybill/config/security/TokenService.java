@@ -1,6 +1,7 @@
 package br.com.alura.oobj.easybill.config.security;
 
 import br.com.alura.oobj.easybill.model.Usuario;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,5 +39,10 @@ public class TokenService {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public Long getIdUsiario(String token) {
+        Claims claims = Jwts.parser().setSigningKey(this.secret).parseClaimsJws(token).getBody();
+        return  Long.parseLong(claims.getSubject());
     }
 }
