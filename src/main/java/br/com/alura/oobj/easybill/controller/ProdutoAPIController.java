@@ -53,12 +53,7 @@ public class ProdutoAPIController {
 
     @PostMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
-    public void invalidaCache(){
-    }
-
-    @GetMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
-    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
-    public void resetaCache() {
+    public void resetaCache(){
     }
 
     @GetMapping("/produtos/{id}")
@@ -95,7 +90,6 @@ public class ProdutoAPIController {
     }
 
     @DeleteMapping("/admin/produtos/{id}")
-    @Transactional
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<?> deletarProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);

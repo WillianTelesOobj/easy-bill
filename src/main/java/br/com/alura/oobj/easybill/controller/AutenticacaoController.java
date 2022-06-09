@@ -28,7 +28,7 @@ public class AutenticacaoController {
     }
 
     @PostMapping
-    public ResponseEntity<?> autenticar(@RequestBody @Valid LoginForm form) {
+    public ResponseEntity<DevolveTokenDto> autenticar(@RequestBody @Valid LoginForm form) {
         UsernamePasswordAuthenticationToken dadosLogin = form.converter();
         try {
             Authentication authentication = authenticationManager.authenticate(dadosLogin);
