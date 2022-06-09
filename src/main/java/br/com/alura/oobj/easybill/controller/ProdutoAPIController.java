@@ -44,7 +44,7 @@ public class ProdutoAPIController {
         if(pagina == null){
             pagina = 0;
         }
-        Pageable pageable = PageRequest.of(pagina, 5, Sort.by(Sort.Direction.DESC, "nome"));
+        Pageable pageable = PageRequest.of(pagina, 5, Sort.by(Sort.Direction.ASC, "nome"));
         return produtoRepository.findAll(pageable).map(DevolveProdutoDto::toDevolveProdutoDto);
     }
 
