@@ -19,6 +19,10 @@ public class DevolveProdutoDto {
 
     private String classeFiscal;
 
+    public DevolveProdutoDto() {
+
+    }
+
     public Long getId() {
         return id;
     }
@@ -37,6 +41,26 @@ public class DevolveProdutoDto {
 
     public String getClasseFiscal() {
         return classeFiscal;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public void setPreco(BigDecimal preco) {
+        this.preco = preco;
+    }
+
+    public void setClasseFiscal(String classeFiscal) {
+        this.classeFiscal = classeFiscal;
     }
 
     public DevolveProdutoDto(Produto produto){
@@ -63,5 +87,15 @@ public class DevolveProdutoDto {
 
     public static Page<DevolveProdutoDto> converterPageDevolveProdutoDto(Page<Produto> pagina) {
         return pagina.map(DevolveProdutoDto::new);
+    }
+
+    public static DevolveProdutoDto toDevolveProdutoDto (Produto produto) {
+        DevolveProdutoDto listaDeProdutos = new DevolveProdutoDto();
+        listaDeProdutos.setId(produto.getId());
+        listaDeProdutos.setNome(produto.getNome());
+        listaDeProdutos.setDescricao(produto.getDescricao());
+        listaDeProdutos.setPreco(produto.getPrecoPromocional() != null ? produto.getPrecoPromocional() : produto.getPreco());
+        listaDeProdutos.setClasseFiscal(produto.getClasseFiscal());
+        return listaDeProdutos;
     }
 }
