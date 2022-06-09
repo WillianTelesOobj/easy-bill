@@ -5,6 +5,7 @@ import br.com.alura.oobj.easybill.dto.RequisicaoNovoProdutoDto;
 import br.com.alura.oobj.easybill.model.Produto;
 import br.com.alura.oobj.easybill.repository.ProdutoRepository;
 import br.com.alura.oobj.easybill.validator.PrecoPromocionalValidator;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -50,6 +51,16 @@ public class ProdutoAPIController {
         return produtoRepository.findAll(pageable).map(DevolveProdutoDto::toDevolveProdutoDto);
     }
 
+    @PostMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
+    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
+    public void invalidaCache(){
+    }
+
+    @GetMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
+    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
+    public void resetaCache() {
+    }
+
     @GetMapping("/produtos/{id}")
     public ResponseEntity<DevolveProdutoDto> devolveProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produto = produtoRepository.findById(id);
@@ -58,6 +69,7 @@ public class ProdutoAPIController {
 
     @PostMapping("/admin/produtos")
     @Transactional
+    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<RequisicaoNovoProdutoDto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, UriComponentsBuilder uriBuilder, BindingResult result) {
         precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProdutoDto, result);
         if(result.hasErrors()){
@@ -72,6 +84,7 @@ public class ProdutoAPIController {
 
     @PutMapping("/admin/produtos/{id}")
     @Transactional
+    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<Void> atualizarProdutoPorId(@PathVariable Long id, @RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);
         if (produtoOptional.isEmpty()) {
@@ -83,6 +96,7 @@ public class ProdutoAPIController {
 
     @DeleteMapping("/admin/produtos/{id}")
     @Transactional
+    @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<?> deletarProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);
         if (produtoOptional.isEmpty()) {
