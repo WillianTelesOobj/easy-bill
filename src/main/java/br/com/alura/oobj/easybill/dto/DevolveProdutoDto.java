@@ -1,7 +1,6 @@
 package br.com.alura.oobj.easybill.dto;
 
 import br.com.alura.oobj.easybill.model.Produto;
-import org.springframework.data.domain.Page;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -83,10 +82,6 @@ public class DevolveProdutoDto {
         }
         String descricaoProdutoTruncada = descricao.substring(0,247);
         return descricaoProdutoTruncada + "...";
-    }
-
-    public static Page<DevolveProdutoDto> converterPageDevolveProdutoDto(Page<Produto> pagina) {
-        return pagina.map(DevolveProdutoDto::new);
     }
 
     public static DevolveProdutoDto toDevolveProdutoDto (Produto produto) {
