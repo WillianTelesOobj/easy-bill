@@ -2,6 +2,7 @@ package br.com.alura.oobj.easybill.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
+import java.util.ArrayList;
 import java.util.List;
 
 public class RequisicaoVendaDto {
@@ -10,7 +11,7 @@ public class RequisicaoVendaDto {
     private Long clienteId;
 
     @NotEmpty
-    private List<RequisicaoItemVendaDto> itensVenda;
+    private List<RequisicaoItemVendaDto> itensVenda = new ArrayList<>();
 
     public RequisicaoVendaDto() {
     }
@@ -29,5 +30,9 @@ public class RequisicaoVendaDto {
 
     public void setItensVenda(List<RequisicaoItemVendaDto> itensVenda) {
         this.itensVenda = itensVenda;
+    }
+
+    public void adicionaItem(RequisicaoItemVendaDto requisicaoItemVendaDto) {
+        itensVenda.add(requisicaoItemVendaDto);
     }
 }

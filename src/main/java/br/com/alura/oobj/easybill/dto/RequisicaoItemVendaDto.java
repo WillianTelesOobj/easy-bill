@@ -25,7 +25,7 @@ public class RequisicaoItemVendaDto {
     @NotNull
     @NotEmpty
     @Positive
-    private int produtoId;
+    private Long produtoId;
 
     public int getQuantidade() {
         return quantidade;
@@ -43,11 +43,11 @@ public class RequisicaoItemVendaDto {
         this.observacao = observacao;
     }
 
-    public int getProdutoId() {
+    public Long getProdutoId() {
         return produtoId;
     }
 
-    public void setProdutoId(int produtoId) {
+    public void setProdutoId(Long produtoId) {
         this.produtoId = produtoId;
     }
 
