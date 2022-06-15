@@ -16,6 +16,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -32,6 +33,7 @@ import java.util.List;
 @Profile("test")
 @AutoConfigureMockMvc
 @SpringBootTest
+@ActiveProfiles("test")
 public class VendaAPIControllerTest {
     @Autowired
     private WebApplicationContext webApplicationContext;
