@@ -70,7 +70,7 @@ public class DevolveClienteDto {
     public DevolveClienteDto(Cliente cliente) {
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
-        this.telefone = cliente.getTelefoneCliente();
+        this.telefone = cliente.getTelefone();
         this.email = cliente.getEmail();
         this.rua = cliente.getEndereco().getRua();
         this.numero = cliente.getEndereco().getNumero();

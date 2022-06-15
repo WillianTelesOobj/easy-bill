@@ -29,6 +29,10 @@ public class Cliente {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -45,12 +49,12 @@ public class Cliente {
         this.cpf = cpf;
     }
 
-    public String getTelefoneCliente() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefoneCliente(String telefoneCliente) {
-        this.telefone = telefoneCliente;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getEmail() {

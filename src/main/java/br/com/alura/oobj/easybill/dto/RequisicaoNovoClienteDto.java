@@ -133,7 +133,7 @@ public class RequisicaoNovoClienteDto {
         Cliente cliente = new Cliente();
         cliente.setNome(nome);
         cliente.setCpf(cpf);
-        cliente.setTelefoneCliente(telefone);
+        cliente.setTelefone(telefone);
         cliente.setEmail(email);
         cliente.setEndereco(endereco);
         return cliente;
@@ -146,7 +146,7 @@ public class RequisicaoNovoClienteDto {
     public RequisicaoNovoClienteDto(Cliente cliente) {
         this.nome = cliente.getNome();
         this.cpf = cliente.getCpf();
-        this.telefone = cliente.getTelefoneCliente();
+        this.telefone = cliente.getTelefone();
         this.email = cliente.getEmail();
         this.rua = cliente.getEndereco().getRua();
         this.numero = cliente.getEndereco().getNumero();
