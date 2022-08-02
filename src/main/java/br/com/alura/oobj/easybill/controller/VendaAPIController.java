@@ -20,8 +20,9 @@ import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RequestMapping("/api")
 public class VendaAPIController {
 
@@ -47,17 +48,24 @@ public class VendaAPIController {
     }
 
     @GetMapping("/vendas/{id}")
-    public ResponseEntity<DevolveVendaDto> devolveVendaPorId(@PathVariable Long id){
+    public ResponseEntity<DevolveVendaDto> devolveVendaPorId(@PathVariable Long id) {
         Optional<Venda> venda = vendaRepository.findById(id);
         List<ItemVenda> itemVenda = itemVendaRepository.findAllByVenda_Id(id);
         if(venda.isPresent()){
-            DevolveVendaDto devolveVendaDto = DevolveVendaDto.converter(venda, itemVenda);
+            DevolveVendaDto devolveVendaDto = DevolveVendaDto.converter(venda.get(), itemVenda);
             return ResponseEntity.ok(devolveVendaDto);
         }
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/admin/relatorios/vendas-por-produto")
+    @GetMapping("/vendas")
+    public List<DevolveVendaDto> devolveVenda() {
+        List<Venda> vendas = vendaRepository.findAll();
+        List<ItemVenda> itemVenda = itemVendaRepository.findAll();
+        return vendas.stream().map(venda -> DevolveVendaDto.converter(venda, itemVenda)).collect(Collectors.toList());
+    }
+
+    @GetMapping("/relatorios/vendas-por-produto")
     public ResponseEntity<List<VendasPorProdutoProjection>> retornaRelatorioVendasPorProduto(){
         return ResponseEntity.ok(itemVendaRepository.relatorioVendasPorProduto());
     }

@@ -36,14 +36,15 @@ public class ProdutoAPIController {
 
     @GetMapping("/produtos/listagem")
     @Cacheable(value = "listagemDeProdutos")
-    public List<DevolveProdutoDto> listagemDeProdutos(){
+    @CacheEvict(value = "listagemDeProdutos", allEntries = true)
+    public List<DevolveProdutoDto> listagemDeProdutos() {
         List<Produto> produtos = produtoRepository.findAll();
         return DevolveProdutoDto.converter(produtos);
     }
 
     @GetMapping("/produtos")
     @Cacheable(value = "paginacaoDeProdutos")
-    public Page<DevolveProdutoDto> retornaLista(@RequestParam(value = "pagina", defaultValue = "") Integer pagina){
+    public Page<DevolveProdutoDto> retornaLista(@RequestParam(value = "pagina", defaultValue = "") Integer pagina) {
         if(pagina == null){
             pagina = 0;
         }
@@ -62,7 +63,7 @@ public class ProdutoAPIController {
         return produto.map(value -> ResponseEntity.ok(new DevolveProdutoDto(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/admin/produtos")
+    @PostMapping("/produtos")
     @Transactional
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<RequisicaoNovoProdutoDto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, UriComponentsBuilder uriBuilder, BindingResult result) {
@@ -77,7 +78,7 @@ public class ProdutoAPIController {
         return ResponseEntity.created(uri).body(new RequisicaoNovoProdutoDto(produto));
     }
 
-    @PutMapping("/admin/produtos/{id}")
+    @PutMapping("/produtos/{id}")
     @Transactional
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<Void> atualizarProdutoPorId(@PathVariable Long id, @RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto) {
@@ -89,7 +90,7 @@ public class ProdutoAPIController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/admin/produtos/{id}")
+    @DeleteMapping("/produtos/{id}")
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<?> deletarProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);

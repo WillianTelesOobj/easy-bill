@@ -26,8 +26,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import java.math.BigDecimal;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringRunner.class)
 @Profile("test")
@@ -35,6 +33,7 @@ import java.util.List;
 @SpringBootTest
 @ActiveProfiles("test")
 public class VendaAPIControllerTest {
+
     @Autowired
     private WebApplicationContext webApplicationContext;
     private MockMvc mockMvc;
@@ -42,9 +41,7 @@ public class VendaAPIControllerTest {
     private ClienteRepository clienteRepository;
     @Autowired
     private ProdutoRepository produtoRepository;
-
     private ObjectMapper objectMapper = new ObjectMapper();
-
     @Before
     public void setup() {
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -71,9 +68,7 @@ public class VendaAPIControllerTest {
         RequisicaoVendaDto requisicaoVendaDto = criaRequisicaoVendaDto(cliente);
         String requisicaoVendaDtoJson = objectMapper.writeValueAsString(requisicaoVendaDto);
 
-
         URI uri = new URI("/api/vendas");
-
 
         mockMvc.perform(MockMvcRequestBuilders
                         .post(uri)

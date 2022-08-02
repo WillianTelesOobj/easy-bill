@@ -56,15 +56,15 @@ public class DevolveVendaDto {
         this.itens = itens;
     }
 
-    public DevolveVendaDto(Optional<Venda> venda, List<ItemVenda> itens) {
-        this.id = venda.get().getId();
-        this.status = venda.get().getStatus();
-        this.dataCriacao = venda.get().getDataCriacao();
-        this.clienteId = venda.get().getCliente().getId();
+    public DevolveVendaDto(Venda venda, List<ItemVenda> itens) {
+        this.id = venda.getId();
+        this.status = venda.getStatus();
+        this.dataCriacao = venda.getDataCriacao();
+        this.clienteId = venda.getCliente().getId();
         this.itens = DevolveItemVendaDto.converter(itens);
     }
 
-    public static DevolveVendaDto converter(Optional<Venda> venda, List<ItemVenda> itemVendas){
+    public static DevolveVendaDto converter(Venda venda, List<ItemVenda> itemVendas){
         return new DevolveVendaDto(venda, itemVendas);
     }
 }

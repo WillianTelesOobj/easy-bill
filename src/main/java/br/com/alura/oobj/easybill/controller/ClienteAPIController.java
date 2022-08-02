@@ -41,7 +41,7 @@ public class ClienteAPIController {
         return cliente.map(value -> ResponseEntity.ok(new DevolveClienteDto(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/admin/clientes")
+    @GetMapping("/api/clientes")
     public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(required = false) Optional<String> estado){
         if(estado.isEmpty()) {
             List<Cliente> clientes = clienteRepository.findAll();

@@ -23,7 +23,7 @@ public class RequisicaoNovoProdutoDto {
     @Positive
     private BigDecimal preco;
 
-    @Positive
+    @PositiveOrZero
     private BigDecimal precoPromocional;
 
     @NotBlank

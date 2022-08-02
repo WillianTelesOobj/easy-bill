@@ -26,6 +26,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 public class ItemVendaRepositoryTest {
+
     @Autowired
     private ItemVendaRepository itemVendaRepository;
     @Autowired
@@ -88,7 +89,7 @@ public class ItemVendaRepositoryTest {
         venda.setDataCriacao(LocalDateTime.now());
         venda.setStatus(StatusVenda.REALIZADA);
         venda.setCliente(cliente);
-        venda.setId(1l);
+        venda.setId(1L);
         vendaRepository.save(venda);
         return venda;
     }
