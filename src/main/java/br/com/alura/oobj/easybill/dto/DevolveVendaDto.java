@@ -64,7 +64,7 @@ public class DevolveVendaDto {
         this.itens = DevolveItemVendaDto.converter(itens);
     }
 
-    public static DevolveVendaDto converter(Venda venda, List<ItemVenda> itemVendas){
+    public static DevolveVendaDto converter(Venda venda, List<ItemVenda> itemVendas) {
         return new DevolveVendaDto(venda, itemVendas);
     }
 }

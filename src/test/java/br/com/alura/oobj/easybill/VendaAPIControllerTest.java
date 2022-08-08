@@ -93,7 +93,7 @@ public class VendaAPIControllerTest {
         return requisicaoVendaDto;
     }
 
-    private Endereco enderecoTeste(){
+    private Endereco enderecoTeste() {
         Endereco endereco = new Endereco();
         endereco.setRua("Rua 5");
         endereco.setNumero("5");
@@ -104,7 +104,7 @@ public class VendaAPIControllerTest {
         return endereco;
     }
 
-    private Cliente clienteTeste(){
+    private Cliente clienteTeste() {
         Cliente cliente = new Cliente();
         cliente.setNome("José");
         cliente.setCpf("555.555.555-55");
@@ -115,7 +115,7 @@ public class VendaAPIControllerTest {
         return cliente;
     }
 
-    private Produto produtoTeste(){
+    private Produto produtoTeste() {
         Produto produto = new Produto();
         produto.setNome("Notebook Dell");
         produto.setUrl("www.dell.com");

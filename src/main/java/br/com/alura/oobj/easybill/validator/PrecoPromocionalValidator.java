@@ -9,12 +9,12 @@ import static java.util.Objects.isNull;
 @Component
 public class PrecoPromocionalValidator {
 
-    public void validacaoPrecoPromocional(RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, BindingResult result){
-        if(isNull(requisicaoNovoProdutoDto.getPreco()) || isNull(requisicaoNovoProdutoDto.getPrecoPromocional())){
+    public void validacaoPrecoPromocional(RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, BindingResult result) {
+        if(isNull(requisicaoNovoProdutoDto.getPreco()) || isNull(requisicaoNovoProdutoDto.getPrecoPromocional())) {
             return;
         }
         Integer compare = requisicaoNovoProdutoDto.getPreco().compareTo(requisicaoNovoProdutoDto.getPrecoPromocional());
-        if(compare.equals(1)){
+        if(compare.equals(1)) {
             return;
         }
         result.rejectValue("precoPromocional", "", "O Preço Promocional do Produto deve ser menor que o Preço do Produto");

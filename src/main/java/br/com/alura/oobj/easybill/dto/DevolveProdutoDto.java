@@ -62,7 +62,7 @@ public class DevolveProdutoDto {
         this.classeFiscal = classeFiscal;
     }
 
-    public DevolveProdutoDto(Produto produto){
+    public DevolveProdutoDto(Produto produto) {
         this.id = produto.getId();
         this.nome = produto.getNome();
         this.descricao = getDescricaoProdutoTruncada(produto.getDescricao());
@@ -70,7 +70,7 @@ public class DevolveProdutoDto {
         this.classeFiscal = produto.getClasseFiscal();
     }
 
-    public static List<DevolveProdutoDto> converter(List<Produto> produtos){
+    public static List<DevolveProdutoDto> converter(List<Produto> produtos) {
         return produtos.stream()
                 .map(DevolveProdutoDto::new)
                 .collect(Collectors.toList());

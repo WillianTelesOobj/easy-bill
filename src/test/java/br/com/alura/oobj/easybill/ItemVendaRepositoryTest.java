@@ -94,7 +94,7 @@ public class ItemVendaRepositoryTest {
         return venda;
     }
 
-    public Cliente criaCliente(){
+    public Cliente criaCliente() {
         Cliente cliente = new Cliente();
         Endereco endereco = criaEnderaco();
         cliente.setNome("Willian Teste");

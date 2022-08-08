@@ -30,7 +30,7 @@ public class ProdutoController {
         return "admin/produtos";
     }
 
-    public ProdutoController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator, ProdutoAPIController produtoAPIController){
+    public ProdutoController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator, ProdutoAPIController produtoAPIController) {
         this.produtoRepository = produtoRepository;
         this.precoPromocionalValidator = precoPromocionalValidator;
         this.produtoAPIController = produtoAPIController;
@@ -44,7 +44,7 @@ public class ProdutoController {
     @PostMapping("produtos")
     public String produtos(@Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, BindingResult result) {
         precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProdutoDto,result);
-        if(result.hasErrors()){
+        if(result.hasErrors()) {
             return "admin/produtos/formulario";
         }
         Produto produto = requisicaoNovoProdutoDto.toProduto();
@@ -53,7 +53,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/produto")
-    public ModelAndView listaProdutos(){
+    public ModelAndView listaProdutos() {
         ModelAndView modelAndView = new ModelAndView("admin/produtos");
         modelAndView.addObject("produto", produtoAPIController.listagemDeProdutos());
         return modelAndView;

@@ -29,7 +29,7 @@ public class ProdutoAPIController {
     private final ProdutoRepository produtoRepository;
     private final PrecoPromocionalValidator precoPromocionalValidator;
 
-    public ProdutoAPIController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator){
+    public ProdutoAPIController(ProdutoRepository produtoRepository, PrecoPromocionalValidator precoPromocionalValidator) {
         this.produtoRepository = produtoRepository;
         this.precoPromocionalValidator = precoPromocionalValidator;
     }
@@ -45,7 +45,7 @@ public class ProdutoAPIController {
     @GetMapping("/produtos")
     @Cacheable(value = "paginacaoDeProdutos")
     public Page<DevolveProdutoDto> retornaLista(@RequestParam(value = "pagina", defaultValue = "") Integer pagina) {
-        if(pagina == null){
+        if(pagina == null) {
             pagina = 0;
         }
         Pageable pageable = PageRequest.of(pagina, 5, Sort.by(Sort.Direction.ASC, "nome"));
@@ -54,7 +54,7 @@ public class ProdutoAPIController {
 
     @PostMapping("/aW52YWxpZGEgY2FjaGUgbGlzdGFnZW0gcHJvZHV0b3M")
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
-    public void resetaCache(){
+    public void resetaCache() {
     }
 
     @GetMapping("/produtos/{id}")
@@ -68,7 +68,7 @@ public class ProdutoAPIController {
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<RequisicaoNovoProdutoDto> insereNovoProduto(@RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto, UriComponentsBuilder uriBuilder, BindingResult result) {
         precoPromocionalValidator.validacaoPrecoPromocional(requisicaoNovoProdutoDto, result);
-        if(result.hasErrors()){
+        if(result.hasErrors()) {
             return ResponseEntity.badRequest().body(new RequisicaoNovoProdutoDto());
         }
         Produto produto = requisicaoNovoProdutoDto.toProduto();

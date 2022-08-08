@@ -25,7 +25,7 @@ public class ClienteAPIController {
 
     @PostMapping("/api/clientes")
     public ResponseEntity<RequisicaoNovoClienteDto> insereNovoCliente(@RequestBody @Valid RequisicaoNovoClienteDto requisicaoNovoClienteDto, UriComponentsBuilder uriBuilder, BindingResult result) {
-        if(result.hasErrors()){
+        if(result.hasErrors()) {
             return ResponseEntity.badRequest().body(new RequisicaoNovoClienteDto());
         }
         Cliente cliente = requisicaoNovoClienteDto.toCliente();
@@ -42,7 +42,7 @@ public class ClienteAPIController {
     }
 
     @GetMapping("/api/clientes")
-    public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(required = false) Optional<String> estado){
+    public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(required = false) Optional<String> estado) {
         if(estado.isEmpty()) {
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);

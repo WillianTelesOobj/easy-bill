@@ -51,8 +51,8 @@ public class RequisicaoItemVendaDto {
         this.produtoId = produtoId;
     }
 
-    private BigDecimal retornaValorDoPrecoUnitario(BigDecimal precoProduto){
-        BigDecimal precoUnitario = BigDecimal.ZERO;
+    private BigDecimal retornaValorDoPrecoUnitario(BigDecimal precoProduto) {
+        BigDecimal precoUnitario;
         precoUnitario = precoProduto;
         return precoUnitario;
     }
@@ -62,9 +62,9 @@ public class RequisicaoItemVendaDto {
         item.setObservacao(observacao);
         item.setQuantidade(quantidade);
         item.setVenda(venda);
-        item.setProduto(produtoRepository.findById((long) produtoId).get());
-        item.setPrecoUnitario(retornaValorDoPrecoUnitario(produtoRepository.findById((long) produtoId).get().getPreco()));
-        item.setPrecoUnitarioPromocional(produtoRepository.findById((long) produtoId).get().getPrecoPromocional());
+        item.setProduto(produtoRepository.findById(produtoId).get());
+        item.setPrecoUnitario(retornaValorDoPrecoUnitario(produtoRepository.findById(produtoId).get().getPreco()));
+        item.setPrecoUnitarioPromocional(produtoRepository.findById(produtoId).get().getPrecoPromocional());
         return item;
     }
 }

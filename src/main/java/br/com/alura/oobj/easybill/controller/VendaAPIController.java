@@ -39,7 +39,7 @@ public class VendaAPIController {
     @PostMapping("/vendas")
     @Transactional
     public ResponseEntity<RequisicaoItemVendaDto> criacaoDeVenda(@RequestBody @Valid RequisicaoVendaDto requisicaoVendaDto, UriComponentsBuilder uriBuilder, BindingResult result) {
-        if(result.hasErrors()){
+        if(result.hasErrors()) {
             return ResponseEntity.badRequest().build();
         }
         Venda venda = vendaService.registraVenda(requisicaoVendaDto);
@@ -51,7 +51,7 @@ public class VendaAPIController {
     public ResponseEntity<DevolveVendaDto> devolveVendaPorId(@PathVariable Long id) {
         Optional<Venda> venda = vendaRepository.findById(id);
         List<ItemVenda> itemVenda = itemVendaRepository.findAllByVenda_Id(id);
-        if(venda.isPresent()){
+        if(venda.isPresent()) {
             DevolveVendaDto devolveVendaDto = DevolveVendaDto.converter(venda.get(), itemVenda);
             return ResponseEntity.ok(devolveVendaDto);
         }
@@ -66,7 +66,7 @@ public class VendaAPIController {
     }
 
     @GetMapping("/relatorios/vendas-por-produto")
-    public ResponseEntity<List<VendasPorProdutoProjection>> retornaRelatorioVendasPorProduto(){
+    public ResponseEntity<List<VendasPorProdutoProjection>> retornaRelatorioVendasPorProduto() {
         return ResponseEntity.ok(itemVendaRepository.relatorioVendasPorProduto());
     }
 }

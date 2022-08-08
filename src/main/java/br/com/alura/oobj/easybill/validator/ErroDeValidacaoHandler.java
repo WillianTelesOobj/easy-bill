@@ -15,7 +15,7 @@ import java.util.List;
 @RestControllerAdvice
 public class ErroDeValidacaoHandler {
 
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
     public ErroDeValidacaoHandler(MessageSource messageSource) {
         this.messageSource = messageSource;
@@ -23,7 +23,7 @@ public class ErroDeValidacaoHandler {
 
     @ResponseStatus(code = HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public List<MensagemDeErro> handle(MethodArgumentNotValidException exception){
+    public List<MensagemDeErro> handle(MethodArgumentNotValidException exception) {
         List<MensagemDeErro> mensagemDeErros = new ArrayList<>();
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         fieldErrors.forEach(e ->{
@@ -36,7 +36,7 @@ public class ErroDeValidacaoHandler {
 
     @ResponseStatus(code = HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
-    public List<MensagemDeErro> handlerNotFound (NotFoundException exception){
+    public List<MensagemDeErro> handlerNotFound (NotFoundException exception) {
         List<MensagemDeErro> mensagens = new ArrayList<>();
         mensagens.add(new MensagemDeErro("Cliente", exception.getMessage()));
         return mensagens;
