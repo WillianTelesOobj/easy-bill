@@ -83,7 +83,7 @@ public class ProdutoAPIController {
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<Void> atualizarProdutoPorId(@PathVariable Long id, @RequestBody @Valid RequisicaoNovoProdutoDto requisicaoNovoProdutoDto) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);
-        if (produtoOptional.isEmpty()) {
+        if (!produtoOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         requisicaoNovoProdutoDto.update(id, produtoRepository);
@@ -94,7 +94,7 @@ public class ProdutoAPIController {
     @CacheEvict(value = "paginacaoDeProdutos", allEntries = true)
     public ResponseEntity<?> deletarProdutoPorId(@PathVariable Long id) {
         Optional<Produto> produtoOptional = produtoRepository.findById(id);
-        if (produtoOptional.isEmpty()) {
+        if (!produtoOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
         produtoRepository.deleteById(id);

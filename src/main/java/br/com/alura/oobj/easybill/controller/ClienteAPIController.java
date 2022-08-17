@@ -43,7 +43,7 @@ public class ClienteAPIController {
 
     @GetMapping("/api/clientes")
     public List<DevolveClienteDto> devolveClientesPorEstado(@RequestParam(required = false) Optional<String> estado) {
-        if(estado.isEmpty()) {
+        if(!estado.isPresent()) {
             List<Cliente> clientes = clienteRepository.findAll();
             return DevolveClienteDto.converter(clientes);
         }
